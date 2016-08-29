@@ -7,7 +7,6 @@ sources[1] = 'https://h5p.org/h5p/embed/21468'
 sources[2] = 'https://h5p.org/h5p/embed/21469'
 sources[3] = 'https://h5p.org/h5p/embed/21470'
 
-
 var j = 0
 var p = sources.length;
 var preBuffer = new Array()
@@ -20,4 +19,3 @@ for (i = 0; i < p; i++){
 	  $('#question').attr('src', 'sources[whichSource]');
     
 	  }
-
