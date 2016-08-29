@@ -1,4 +1,5 @@
 $('#random').on('click', function () {
+window.alert(theImages[whichImage]);
 var theImages = new Array() // do not change this
 // To add more image files, continue with the
 // pattern below, adding to the array.
@@ -21,6 +22,6 @@ for (i = 0; i < p; i++){
 		}
 	var whichImage = Math.round(Math.random()*(p-1));
 	  $('#question').attr('src', 'theImages[whichImage]');
-    window.alert(theImages[whichImage]);
+    
 	  }
 
