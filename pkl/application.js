@@ -17,5 +17,4 @@ for (i = 0; i < p; i++){
 		}
 	var randomSource = Math.round(Math.random()*(p-1));
 	  $('#question').attr('src', 'sources[randomSource]');
-
 	  }
