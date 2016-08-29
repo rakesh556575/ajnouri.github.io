@@ -1,4 +1,4 @@
-$('#random').click(function() {
+$('#randomize').click(function() {
 
 var sources = new Array()
 
@@ -15,7 +15,7 @@ for (i = 0; i < p; i++){
 	   preBuffer[i] = new Image()
 	   preBuffer[i].src = sources[i]
 		}
-	var whichSource = Math.round(Math.random()*(p-1));
-	  $('#question').attr('src', 'sources[whichSource]');
-    
+	var randomSource = Math.round(Math.random()*(p-1));
+	  $('#question').attr('src', 'sources[randomSource]');
+
 	  }
