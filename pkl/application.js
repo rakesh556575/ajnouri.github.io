@@ -12,10 +12,12 @@ $(document).ready(function(){
     var randomSource = Math.round(Math.random()*(p-1));
     console.log(sources[randomSource]);
     $('#question').attr('src', sources[randomSource]);
+ 	$("#question").text("URL value is now: " + sources[randomSource]);        
 }
 
 $('#randomize').click(function() {
     var randomSource = Math.round(Math.random()*(p-1));
     console.log(sources[randomSource]);
     $('#question').attr('src', sources[randomSource]);
+ 	$("#question").text("URL value is now: " + sources[randomSource]);    
 }
