@@ -5,35 +5,32 @@
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <script>
+      $(function(){
+        $("#header").load("header.html"); 
+        $("#footer").load("footer.html"); 
+      });
+    </script>
   </head><body>
     <div class="section">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="section">
-              <div class="container">
-                
-                <div class="row">
-                  <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="section">
+                  <div class="container">
                     <div class="row">
-                      <div class="col-md-4">
-                        <div class="section">
-                          <div class="container">
-                            <div class="row">
-                              <div class="col-md-6">
-                                <a class="btn btn-primary" id="randomize">sekvanta ekzerco</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div><pre>                          <code>
-                            <iframe id="question" src="https://h5p.org/h5p/embed/19684" width="275" height="650" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-                          </code>
-                        </pre>
+                      <div class="col-md-6">
+                        <a class="btn btn-primary" id="randomize">sekvanta ekzerco</a>
                       </div>
-                      
                     </div>
                   </div>
                 </div>
+                <pre>                  <code>
+                    <iframe id="question" src="https://h5p.org/h5p/embed/19684" width="275" height="650" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+                  </code>
+                </pre>
               </div>
             </div>
           </div>
