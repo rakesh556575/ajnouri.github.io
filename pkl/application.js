@@ -15,11 +15,3 @@ $(document).ready(function() {
 	 	$("#question").text("URL value is now: " + sources[randomSource]);    
     });
 });
-$('#permesilo').click(function() {
-	BootstrapDialog.show({
-        title: 'Permesilo',
-        message:<p>Por la teksta enhavo:</p>
-			<p>la koncepto de PKL (sen la fotoj kaj videoj de fizikaj personoj) estas sub la permesilo <a href="https://www.gnu.org/licenses/gpl.html">Ĝenerala Publika Permesilo de GNU<p>		<p>Por la videoj kaj fotoj de fizikaj personoj:</p>
-			<p>Estas permesita reuzi la videojn kaj fotojn de fizikaj personoj NUR en la konteksto de PKL kaj cxiuj aliaj uzado neprigas la permeson de la persono sur la video aux la foto.</p>
- 	});
-};
