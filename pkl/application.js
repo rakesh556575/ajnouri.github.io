@@ -10,8 +10,17 @@ $(document).ready(function() {
 
 	$('#randomize').click(function() {
 	    var randomSource = Math.round(Math.random()*(p-1));
-	    console.log(sources[randomSource]);
+	    //console.log(sources[randomSource]);
 	    $('#question').attr('src', sources[randomSource]);
-	 	$("#question").text("URL value is now: " + sources[randomSource]);    
+	 	//$("#question").text("URL value is now: " + sources[randomSource]);    
     });
+});
+$('#memor1').click(function() {
+    $('#memorejo').attr('src', 'https://h5p.org/h5p/embed/21988');
+});
+$('#memor2').click(function() {
+    $('#memorejo').attr('src', 'https://h5p.org/h5p/embed/21992');
+});
+$('#memor3').click(function() {
+    $('#memorejo').attr('src', 'https://h5p.org/h5p/embed/24741');
 });
