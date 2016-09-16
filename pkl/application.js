@@ -14,13 +14,14 @@ $(document).ready(function() {
 	    $('#question').attr('src', sources[randomSource]);
 	 	//$("#question").text("URL value is now: " + sources[randomSource]);    
     });
+	$('#memor1').click(function() {
+	    $('#memorejo').attr('src', 'https://h5p.org/h5p/embed/21988');
+	});
+	$('#memor2').click(function() {
+	    $('#memorejo').attr('src', 'https://h5p.org/h5p/embed/21992');
+	});
+	$('#memor3').click(function() {
+	    $('#memorejo').attr('src', 'https://h5p.org/h5p/embed/24741');
+	});
 });
-$('#memor1').click(function() {
-    $('#memorejo').attr('src', 'https://h5p.org/h5p/embed/21988');
-});
-$('#memor2').click(function() {
-    $('#memorejo').attr('src', 'https://h5p.org/h5p/embed/21992');
-});
-$('#memor3').click(function() {
-    $('#memorejo').attr('src', 'https://h5p.org/h5p/embed/24741');
-});
+
