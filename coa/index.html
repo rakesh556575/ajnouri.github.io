@@ -1,0 +1,48 @@
+<html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head><body>
+    <div class="container">
+      <h2>COA exam simulation</h2>
+      <p>
+        <strong>Note:</strong>The
+        <strong>data-parent</strong>attribute makes sure that all collapsible elements
+        under the specified parent will be closed when one of the collapsible item
+        is shown.</p>
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+              Having an old rc file and without downloading rc file from project &gt; Access and security &gt; API access &gt;, make sure to build rc file for both tenants admin &amp; demo
+              </a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body">Go to identity &gt; project, get project id from old admin-openrc.sh,
+              replace tentant id with project admin id to build admin credential file
+              and demo credential file and finally source it: source demorc.sh</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+              Creating a project named "new-project1", a user "new-user1" with password "new-user1", and assign a new role role "manager" to that user.
+              </a>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">openstack project create "project1" openstack project list openstack user
+              create "new-user1" openstack user list openstack role create "manager"
+              openstack role list</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  
+
+</body></html>
