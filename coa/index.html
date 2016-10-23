@@ -74,20 +74,20 @@ Creating a project named "new-project1", a user "new-user1" with password "new-u
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#compute1">
 From demo account, generate a public keypair named mypubkey1 for use with openstack instances
 
               </a>
                     </h4>
                   </div>
-                  <div id="collapse2" class="panel-collapse collapse">
+                  <div id="compute1" class="panel-collapse collapse">
                     <div class="panel-body">nova keypair-add key1 &gt; key1.pem chmod 600 key1.pem nova keypair-list</div>
                   </div>
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#compute2">
 <p>From admin account, create a new flavor named m1.extra_tiny with:</p>
 <ul>
 <li>RAM: 64mb</li>
@@ -98,7 +98,7 @@ From demo account, generate a public keypair named mypubkey1 for use with openst
               </a>
                     </h4>
                   </div>
-                  <div id="collapse2" class="panel-collapse collapse">
+                  <div id="compute2" class="panel-collapse collapse">
                     <div class="panel-body">
                       <pre>                        <code>. admin_rc.sh nova flavor-list nova flavor-create m1.extra_tiny auto 64
                           0 1 --rxtx-factor 1.0</code>
