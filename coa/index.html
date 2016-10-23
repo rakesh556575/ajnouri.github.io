@@ -81,7 +81,11 @@ From demo account, generate a public keypair named mypubkey1 for use with openst
                     </h4>
                   </div>
                   <div id="compute1" class="panel-collapse collapse">
-                    <div class="panel-body">nova keypair-add key1 &gt; key1.pem chmod 600 key1.pem nova keypair-list</div>
+                    <div class="panel-body">
+                      <p>nova keypair-add key1 key1.pem
+                        <br>chmod 600 key1.pem
+                        <br>nova keypair-list</p>
+                    </div>
                   </div>
                 </div>
                 <div class="panel panel-default">
@@ -100,9 +104,108 @@ From demo account, generate a public keypair named mypubkey1 for use with openst
                   </div>
                   <div id="compute2" class="panel-collapse collapse">
                     <div class="panel-body">
-                      <pre>                        <code>. admin_rc.sh nova flavor-list nova flavor-create m1.extra_tiny auto 64
-                          0 1 --rxtx-factor 1.0</code>
-                      </pre>
+                      <p>. admin_rc.sh
+                        <br>nova flavor-lis
+                        <br>nova flavor-create m1.extra_tiny auto 64 0 1 --rxtx-factor 1.0</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#compute3">
+
+Allow the tenant (project) "demo" to access the flavor
+
+              </a>
+                    </h4>
+                  </div>
+                  <div id="compute3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>openstack project list
+                        <br>nova flavor-access-add m1.extra_tiny</p>
+                      <p>
+                        <br>Additional commands:
+                        <br>nova flavor-list
+                        <br>nova flavor-delete {flavorid}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#compute4">
+
+Add new rules to the default security group "default" to allow access instances from internet through SSH, http and ICMP.
+
+              </a>
+                    </h4>
+                  </div>
+                  <div id="compute4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>nova secgroup-list
+                        <br>nova secgroup-list-rules default
+                        <br>nova secgroup-add-rule default tcp 22 22 0.0.0.0/0
+                        <br>nova secgroup-add-rule default tcp 80 80 0.0.0.0/0
+                        <br>nova secgroup-add-rule default icmp -1 -1 0.0.0.0/0</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#compute5">
+
+Provision the following instance:
+<ul>
+<li>image: cirros-0.3.4-x86_64-uec</li>
+<li>flavor: m1.tiny</li>
+<li>keypair: key1</li>
+<li>security group: default</li>
+</ul>
+
+              </a>
+                    </h4>
+                  </div>
+                  <div id="compute5" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>nova boot instance2 --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key-name
+                        key1 --security-group default</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#compute6">
+
+Log to the machine console using the keypair key1
+
+              </a>
+                    </h4>
+                  </div>
+                  <div id="compute6" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>Get the instance IP address from nova list command:
+                        <br>ssh -i key1.pem ubuntu@{ip}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#compute7">
+
+Create a snapshot named "instance2-snapshot" from the running image instance2
+
+              </a>
+                    </h4>
+                  </div>
+                  <div id="compute7" class="panel-collapse collapse">
+                    <div class="panel-body">
+<p>nova image-create {instance2} {instance2-snapshot}
+  <br>nova delete {instance2}</p>
+                    
                     </div>
                   </div>
                 </div>
