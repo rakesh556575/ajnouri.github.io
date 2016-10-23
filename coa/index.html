@@ -11,43 +11,56 @@
         <strong>data-parent</strong>attribute makes sure that all collapsible elements
         under the specified parent will be closed when one of the collapsible item
         is shown.</p>
-      <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+      <div class="panel-group" id="accordion"></div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Identity</h3>
+              </div>
+              <div class="panel-body">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
               Having an old rc file and without downloading rc file from project &gt; Access and security &gt; API access &gt;, make sure to build rc file for both tenants admin &amp; demo
               </a>
-            </h4>
-          </div>
-          <div id="collapse1" class="panel-collapse collapse in">
-            <div class="panel-body">Go to identity &gt; project, get project id from old admin-openrc.sh,
-              replace tentant id with project admin id to build admin credential file
-              and demo credential file and finally source it: source demorc.sh</div>
-          </div>
-        </div>
-        <div class="panel panel-default">
+                    </h4>
+                  </div>
+                  <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body">Go to identity &gt; project, get project id from old admin-openrc.sh,
+                      replace tentant id with project admin id to build admin credential file
+                      and demo credential file and finally source it: source demorc.sh</div>
+                  </div>
+                </div>
+<div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-              <p>openstack project create "project1"
-	<br>openstack project list
-	<br>openstack user create "new-user1"
-	<br>openstack user list
-	<br>openstack role create "manager"
-	<br>openstack role list</p>
+Creating a project named "new-project1", a user "new-user1" with password "new-user1", and assign a new role role "manager" to that user.
 
               </a>
             </h4>
           </div>
           <div id="collapse2" class="panel-collapse collapse">
-            <div class="panel-body">openstack project create "project1" openstack project list openstack user
-              create "new-user1" openstack user list openstack role create "manager"
-              openstack role list</div>
+            <div class="panel-body">
+              <p>openstack project create "project1"
+                <br>openstack project list
+                <br>openstack user create "new-user1"
+                <br>openstack user list
+                <br>openstack role create "manager"
+                <br>openstack role list</p>
+            </div>
+          </div>
+        </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   
 
-</body></html>
+</div></body></html>
