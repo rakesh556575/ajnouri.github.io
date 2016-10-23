@@ -36,26 +36,77 @@
                       and demo credential file and finally source it: source demorc.sh</div>
                   </div>
                 </div>
-<div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
 Creating a project named "new-project1", a user "new-user1" with password "new-user1", and assign a new role role "manager" to that user.
 
               </a>
-            </h4>
-          </div>
-          <div id="collapse2" class="panel-collapse collapse">
-            <div class="panel-body">
-              <p>openstack project create "project1"
-                <br>openstack project list
-                <br>openstack user create "new-user1"
-                <br>openstack user list
-                <br>openstack role create "manager"
-                <br>openstack role list</p>
+                    </h4>
+                  </div>
+                  <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>openstack project create "project1"
+                        <br>openstack project list
+                        <br>openstack user create "new-user1"
+                        <br>openstack user list
+                        <br>openstack role create "manager"
+                        <br>openstack role list</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Compute</h3>
+              </div>
+              <div class="panel-body">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+From demo account, generate a public keypair named mypubkey1 for use with openstack instances
+
+              </a>
+                    </h4>
+                  </div>
+                  <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">nova keypair-add key1 &gt; key1.pem chmod 600 key1.pem nova keypair-list</div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+<p>From admin account, create a new flavor named m1.extra_tiny with:</p>
+<ul>
+<li>RAM: 64mb</li>
+<li>Root disk size: 0</li>
+<li>cpu: 1</li>
+</ul>
+
+              </a>
+                    </h4>
+                  </div>
+                  <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <pre>                        <code>. admin_rc.sh nova flavor-list nova flavor-create m1.extra_tiny auto 64
+                          0 1 --rxtx-factor 1.0</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -63,4 +114,4 @@ Creating a project named "new-project1", a user "new-user1" with password "new-u
     </div>
   
 
-</div></body></html>
+</body></html>
