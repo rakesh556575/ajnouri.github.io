@@ -5,62 +5,216 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
       $(document).ready(function(){
-    var progress = 0;
-    var qnumber = $(".qcheckbox").length;
-    var qweight = 100 / qnumber;
-    //window.alert(qweight)
-    window.alert($(".qcheckbox").length);
+            var progress = 0;
+            var qnumber = $(".qcheckbox").length;
+            var qweight = 100 / qnumber;
+            var checked = 0;
+            /* window.alert(qweight);
+            window.alert($(".qcheckbox").length); */
+                
+                  // By default hide all sections
+                  $("#keystone-sectionid").hide();
+                  $("#compute-sectionid").hide();
+                  $("#glance-sectionid").hide();
+                  $("#cinder-sectionid").hide();
+                  $("#swift-sectionid").hide();
+                  $("#heat-sectionid").hide();
         
-
-        $("#keystone-sectionid").hide();
-          $("#compute-sectionid").hide();
-          $("#glance-sectionid").hide();
-          $("#cinder-sectionid").hide();
-          $("#swift-sectionid").hide();
-          $("#heat-sectionid").hide();
-
+        		  // toggle section visibility               
+                  $("#keystone-checkboxid").click(function(){
+                      $("#keystone-sectionid").toggle();
+                  });
+                  $("#compute-checkboxid").click(function(){
+                      $("#compute-sectionid").toggle();
+                  });
+                  $("#glance-checkboxid").click(function(){
+                      $("#glance-sectionid").toggle();
+                  });
+                  $("#cinder-checkboxid").click(function(){
+                      $("#cinder-sectionid").toggle();
+                  });
+                  $("#heat-checkboxid").click(function(){
+                      $("#heat-sectionid").toggle();
+                  });
         
-        
-          $("#keystone-checkboxid").click(function(){
-              $("#keystone-sectionid").toggle();
-          });
-          $("#compute-checkboxid").click(function(){
-              $("#compute-sectionid").toggle();
-          });
-          $("#glance-checkboxid").click(function(){
-              $("#glance-sectionid").toggle();
-          });
-          $("#cinder-checkboxid").click(function(){
-              $("#cinder-sectionid").toggle();
-          });
-          $("#heat-checkboxid").click(function(){
-              $("#heat-sectionid").toggle();
-          });
-
-//######################################
-    function progressbar(id) {
-        if ($(id).is(":checked") == true) {
-        //  alert('1');
-        progress = progress+5;
-        $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
-        }
-        else if ($(id).is(":checked") == false) {
-        //  alert('2');
-        progress = progress-5;
-        $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
-        }      
-    }
-//######################################
-
-    $("#identity1 input").on('change', function(){
-      progressbar("#identity1 input")
-    });
-    $("#identity2 input").on('change', function(){
-      progressbar("#identity2 input")
-    });
-      
-    
-      });
+        //######################################
+            function progressbar(id) {
+                if ($(id).is(":checked") == true) {
+                //  alert('1');
+                progress = progress+qweight;
+                //checked = checked + 1
+                $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
+                }
+                else if ($(id).is(":checked") == false) {
+                //  alert('2');
+                progress = progress-qweight;
+                //checked = checked - 1
+                $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
+                }      
+            }
+        //######################################
+        //identity
+            $("#identity1 input").on('change', function(){
+              //alert($(this).attr('id'));
+              progressbar("#identity1 input")
+            });
+            $("#identity2 input").on('change', function(){
+              progressbar("#identity2 input")
+            });
+             
+        //compute
+        $("#compute1 input").on("change", function(){
+        progressbar("#compute1 input")
+        });
+        $("#compute2 input").on("change", function(){
+        progressbar("#compute2 input")
+        });
+        $("#compute3 input").on("change", function(){
+        progressbar("#compute3 input")
+        });
+        $("#compute4 input").on("change", function(){
+        progressbar("#compute4 input")
+        });
+        $("#compute5 input").on("change", function(){
+        progressbar("#compute5 input")
+        });
+        $("#compute6 input").on("change", function(){
+        progressbar("#compute6 input")
+        });
+        $("#compute7 input").on("change", function(){
+        progressbar("#compute7 input")
+        });
+        //glance
+            $("#glance1 input").on('change', function(){
+              progressbar("#glance1 input")
+            });
+            $("#glance2 input").on('change', function(){
+              progressbar("#glance2 input")
+            });
+            $("#glance3 input").on('change', function(){
+              progressbar("#glance3 input")
+            });
+        //cinder instance snapshot
+        $("#cinderis1 input").on("change", function(){
+        progressbar("#cinderis1 input")
+        });
+        $("#cinderis2 input").on("change", function(){
+        progressbar("#cinderis2 input")
+        });
+        $("#cinderis3 input").on("change", function(){
+        progressbar("#cinderis3 input")
+        });
+        $("#cinderis4 input").on("change", function(){
+        progressbar("#cinderis4 input")
+        });
+        $("#cinderis5 input").on("change", function(){
+        progressbar("#cinderis5 input")
+        });
+        $("#cinderis6 input").on("change", function(){
+        progressbar("#cinderis6 input")
+        });
+                
+        //cinder volume snapshot
+        $("#cindervs1 input").on("change", function(){
+        progressbar("#cindervs1 input")
+        });
+        $("#cindervs2 input").on("change", function(){
+        progressbar("#cindervs2 input")
+        });
+        $("#cindervs3 input").on("change", function(){
+        progressbar("#cindervs3 input")
+        });
+        $("#cindervs4 input").on("change", function(){
+        progressbar("#cindervs4 input")
+        });
+        $("#cindervs5 input").on("change", function(){
+        progressbar("#cindervs5 input")
+        });
+        $("#cindervs6 input").on("change", function(){
+        progressbar("#cindervs6 input")
+        });
+        $("#cindervs7 input").on("change", function(){
+        progressbar("#cindervs7 input")
+        });
+        $("#cindervs8 input").on("change", function(){
+        progressbar("#cindervs8 input")
+        });
+        $("#cindervs9 input").on("change", function(){
+        progressbar("#cindervs9 input")
+        });
+        $("#cindervs10 input").on("change", function(){
+        progressbar("#cindervs10 input")
+        });
+        $("#cindervs11 input").on("change", function(){
+        progressbar("#cindervs11 input")
+        });
+        $("#cindervs12 input").on("change", function(){
+        progressbar("#cindervs12 input")
+        });
+        $("#cindervs13 input").on("change", function(){
+        progressbar("#cindervs13 input")
+        });
+                
+        //cinder volume backup
+        $("#cinderba1 input").on("change", function(){
+        progressbar("#cinderba1 input")
+        });
+        $("#cinderba2 input").on("change", function(){
+        progressbar("#cinderba2 input")
+        });
+        $("#cinderba3 input").on("change", function(){
+        progressbar("#cinderba3 input")
+        });
+        $("#cinderba4 input").on("change", function(){
+        progressbar("#cinderba4 input")
+        });
+        $("#cinderba5 input").on("change", function(){
+        progressbar("#cinderba5 input")
+        });
+        $("#cinderba6 input").on("change", function(){
+        progressbar("#cinderba6 input")
+        });
+        $("#cinderba7 input").on("change", function(){
+        progressbar("#cinderba7 input")
+        });
+        $("#cinderba8 input").on("change", function(){
+        progressbar("#cinderba8 input")
+        });
+        $("#cinderba9 input").on("change", function(){
+        progressbar("#cinderba9 input")
+        });
+        $("#cinderba10 input").on("change", function(){
+        progressbar("#cinderba10 input")
+        });
+        $("#cinderba11 input").on("change", function(){
+        progressbar("#cinderba11 input")
+        });
+        //cinder volume encryption
+        $("#cinderve1 input").on("change", function(){
+        progressbar("#cinderve1 input")
+        });
+        $("#cinderve2 input").on("change", function(){
+        progressbar("#cinderve2 input")
+        });
+        $("#cinderve3 input").on("change", function(){
+        progressbar("#cinderve3 input")
+        });
+        $("#cinderve4 input").on("change", function(){
+        progressbar("#cinderve4 input")
+        });
+        $("#cinderve5 input").on("change", function(){
+        progressbar("#cinderve5 input")
+        });        
+        //heat     
+        $("#heat1 input").on("change", function(){
+        progressbar("#heat1 input")
+        });
+        $("#heat2 input").on("change", function(){
+        progressbar("#heat2 input")
+        });        
+             
+        //###############        
+              });
     </script>
   </head><body>
     <div class="container">
@@ -195,7 +349,7 @@
               <div class="panel-body">
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <div class="qcheckbox">
+                    <div class="qcheckbox" id="compute1">
                       <label>1.
                         <input type="checkbox" value="">
                       </label>
@@ -219,7 +373,7 @@
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <div class="qcheckbox">
+                    <div class="qcheckbox" id="compute2">
                       <label>2.
                         <input type="checkbox" value="">
                       </label>
@@ -249,7 +403,7 @@ From admin account, create a new flavor named m1.extra_tiny with:</p>
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <div class="qcheckbox">
+                    <div class="qcheckbox" id="compute3">
                       <label>3.
                         <input type="checkbox" value="">
                       </label>
@@ -276,7 +430,7 @@ Allow the tenant (project) "demo" to access the flavor
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <div class="qcheckbox">
+                    <div class="qcheckbox" id="compute4">
                       <label>4.
                         <input type="checkbox" value="">
                       </label>
@@ -302,7 +456,7 @@ Add new rules to the default security group "default" to allow access instances 
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <div class="qcheckbox">
+                    <div class="qcheckbox" id="compute5">
                       <label>5.
                         <input type="checkbox" value="">
                       </label>
@@ -332,7 +486,7 @@ Provision the following instance:
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <div class="qcheckbox">
+                    <div class="qcheckbox" id="compute6">
                       <label>6.
                         <input type="checkbox" value="">
                       </label>
@@ -355,7 +509,7 @@ Log to the machine console using the keypair key1
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <div class="qcheckbox">
+                    <div class="qcheckbox" id="compute7">
                       <label>7.
                         <input type="checkbox" value="">
                       </label>
@@ -385,12 +539,13 @@ Create a snapshot named "instance2-snapshot" from the running image instance2
               <div class="panel-body">
                 <div class="panel panel-default">
                   <div class="panel-heading">
+                    <div class="qcheckbox" id="glance1">
+                      <label>1.
+                        <input type="checkbox" value="">
+                      </label>
+                    </div>
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#glance1">
-                      <div class="qcheckbox">
-                        <label>
-                          <input type="checkbox" value=""></label>
-                      </div>
 
 Retrieve Ubuntu cloud image file from the following link:
 
@@ -407,12 +562,14 @@ Retrieve Ubuntu cloud image file from the following link:
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
+                    <div class="qcheckbox" id="glance2">
+                      <label>2.
+                        <input type="checkbox" value="">
+                      </label>
+                    </div>
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#glance2">
-                      <div class="qcheckbox">
-                        <label>
-                          <input type="checkbox" value=""></label>
-                      </div>
+
 
 Create an image named "ubuntu-trusty" from the downoaded image file
 
@@ -426,12 +583,14 @@ Create an image named "ubuntu-trusty" from the downoaded image file
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
+                    <div class="qcheckbox" id="glance3">
+                      <label>3.
+                        <input type="checkbox" value="">
+                      </label>
+                    </div>
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#glance3">
-                      <div class="qcheckbox">
-                        <label>
-                          <input type="checkbox" value=""></label>
-                      </div>
+
 
 Start an instance named "u1" from the following parameters:
                       <ul>
@@ -464,12 +623,14 @@ Start an instance named "u1" from the following parameters:
                     <p></p>
                     <div class="panel panel-default">
                       <div class="panel-heading">
+                        <div class="qcheckbox" id="cinderis1">
+                          <label>1.
+                            <input type="checkbox" value="">
+                          </label>
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder11">
-                      <div class="qcheckbox">
-                        <label>
-                          <input type="checkbox" value=""></label>
-                      </div>
+
 
 Create an instance "instance1" from cirros-0.3.4-x86_64-uec image
 <li>image: cirros-0.3.4-x86_64-uec</li>
@@ -498,12 +659,14 @@ Create an instance "instance1" from cirros-0.3.4-x86_64-uec image
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
+                        <div class="qcheckbox" id="cinderis2">
+                          <label>2.
+                            <input type="checkbox" value="">
+                          </label>
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder12">
-                      <div class="qcheckbox">
-                        <label>
-                          <input type="checkbox" value=""></label>
-                      </div>
+
 
 nside the home directory of "instance2" create a file testfile.txt
 
@@ -521,12 +684,14 @@ nside the home directory of "instance2" create a file testfile.txt
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
+                        <div class="qcheckbox" id="cinderis3">
+                          <label>3.
+                            <input type="checkbox" value="">
+                          </label>
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder13">
-                      <div class="qcheckbox">
-                        <label>
-                          <input type="checkbox" value=""></label>
-                      </div>
+
 
 Take a snapshot of instance "instance2", name it "snapshot-of-instance2"
 
@@ -539,12 +704,14 @@ Take a snapshot of instance "instance2", name it "snapshot-of-instance2"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
+                        <div class="qcheckbox" id="cinderis4">
+                          <label>4.
+                            <input type="checkbox" value="">
+                          </label>
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder14">
-                      <div class="qcheckbox">
-                        <label>
-                          <input type="checkbox" value=""></label>
-                      </div>
+
 
 Terminate the instance "instance2"
 
@@ -559,12 +726,14 @@ Terminate the instance "instance2"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
+                        <div class="qcheckbox" id="cinderis5">
+                          <label>5.
+                            <input type="checkbox" value="">
+                          </label>
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder15">
-                      <div class="qcheckbox">
-                        <label>
-                          <input type="checkbox" value=""></label>
-                      </div>
+
 
 Create an instance from "snapshot-of-instance2" and name it "instance-from-snapshot"
 
@@ -578,12 +747,14 @@ Create an instance from "snapshot-of-instance2" and name it "instance-from-snaps
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
+                        <div class="qcheckbox" id="cinderis6">
+                          <label>6.
+                            <input type="checkbox" value="">
+                          </label>
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
-                      <div class="qcheckbox">
-                        <label>
-                          <input type="checkbox" value=""></label>
-                      </div>
+
 Inside the home directory of "instance-from-snapshot" verify the presence of the file "testfile.txt"
 
               </a>
@@ -603,7 +774,7 @@ Inside the home directory of "instance-from-snapshot" verify the presence of the
                   <div class="panel-body">
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cindervs1">
                           <label>1.
                             <input type="checkbox" value="">
                           </label>
@@ -622,7 +793,7 @@ Create a new empty volume "vol1" of a 1GB size
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cindervs2">
                           <label>2.
                             <input type="checkbox" value="">
                           </label>
@@ -658,7 +829,7 @@ Create an instance "instance1" from cirros-0.3.4-x86_64-uec image
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cindervs3">
                           <label>3.
                             <input type="checkbox" value="">
                           </label>
@@ -682,7 +853,7 @@ Attach the created image "vol1" to the instance "instance1" and mount it to /mnt
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cindervs4">
                           <label>4.
                             <input type="checkbox" value="">
                           </label>
@@ -704,7 +875,7 @@ inside the attached volume (/mnt/vdb) create a file testfile.txt
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cindervs5">
                           <label>5.
                             <input type="checkbox" value="">
                           </label>
@@ -723,7 +894,7 @@ On the blockstorage node /dev/stack-volumes/volume-*
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cindervs6">
                           <label>6.
                             <input type="checkbox" value="">
                           </label>
@@ -746,7 +917,7 @@ Detach the volume "vol1" from the instance "instance1"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cindervs7">
                           <label>7.
                             <input type="checkbox" value="">
                           </label>
@@ -769,7 +940,7 @@ Take a snapshot of "vol1", name it "snapshot-of-vol1"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cindervs8">
                           <label>8.
                             <input type="checkbox" value="">
                           </label>
@@ -791,7 +962,7 @@ Create a volume from the snapshot
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cindervs9">
                           <label>9.
                             <input type="checkbox" value="">
                           </label>
@@ -810,7 +981,7 @@ Reattach the first volume "vol1" to the instance "instance1"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cindervs10">
                           <label>10.
                             <input type="checkbox" value="">
                           </label>
@@ -829,7 +1000,7 @@ Delete the previously created file "testfile.txt"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cindervs11">
                           <label>11.
                             <input type="checkbox" value="">
                           </label>
@@ -848,7 +1019,7 @@ detach the colume "vol1" from the instance "instance1"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cindervs12">
                           <label>12.
                             <input type="checkbox" value="">
                           </label>
@@ -867,7 +1038,7 @@ Attach the created volume "new-vol" to the instance "instance1"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cindervs13">
                           <label>13.
                             <input type="checkbox" value="">
                           </label>
@@ -893,7 +1064,7 @@ Inside the attached volume verify the presence of the file "testfile.txt"
                   <div class="panel-body">
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderba1">
                           <label>1.
                             <input type="checkbox" value="">
                           </label>
@@ -915,7 +1086,7 @@ Create a new empty volume "vol2" of a 1GB size
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderba2">
                           <label>2.
                             <input type="checkbox" value="">
                           </label>
@@ -944,7 +1115,7 @@ Create an instance "instance3"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderba3">
                           <label>3.
                             <input type="checkbox" value="">
                           </label>
@@ -964,7 +1135,7 @@ Attach the volume "vol2" it to the instance "instance3"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderba4">
                           <label>4.
                             <input type="checkbox" value="">
                           </label>
@@ -983,7 +1154,7 @@ Inside the home directory of the mounted partition inside "instance3" create a f
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderba5">
                           <label>5.
                             <input type="checkbox" value="">
                           </label>
@@ -1002,7 +1173,7 @@ Detach the volume from the running instance
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderba6">
                           <label>6.
                             <input type="checkbox" value="">
                           </label>
@@ -1025,7 +1196,7 @@ Backup the volume "vol2" into a volume "vol2-backup"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderba7">
                           <label>7.
                             <input type="checkbox" value="">
                           </label>
@@ -1044,7 +1215,7 @@ Remove the original volume "vol2"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderba8">
                           <label>8.
                             <input type="checkbox" value="">
                           </label>
@@ -1063,7 +1234,7 @@ Restore the backed up volume "vol2-backup"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderba9">
                           <label>9.
                             <input type="checkbox" value="">
                           </label>
@@ -1082,7 +1253,7 @@ Restore the backed up volume "vol2-backup"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderba10">
                           <label>10.
                             <input type="checkbox" value="">
                           </label>
@@ -1102,7 +1273,7 @@ Attach it to the running instance "instance3"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderba11">
                           <label>11.
                             <input type="checkbox" value="">
                           </label>
@@ -1128,7 +1299,7 @@ iInside the mounted partition, make sure the file "testfile.txt" exists
                   <div class="panel-body">
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderve1">
                           <label>1.
                             <input type="checkbox" value="">
                           </label>
@@ -1149,7 +1320,7 @@ Create the encrypted volume "encrypted-vol" (LUKS volume) of 1GB size
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderve2">
                           <label>2.
                             <input type="checkbox" value="">
                           </label>
@@ -1182,7 +1353,7 @@ Create an instance "instance4"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderve3">
                           <label>3.
                             <input type="checkbox" value="">
                           </label>
@@ -1202,7 +1373,7 @@ Attach the encrypted volume to the machine
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderve4">
                           <label>4.
                             <input type="checkbox" value="">
                           </label>
@@ -1223,7 +1394,7 @@ Create a file "testfile.txt" and syncronize the operations
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <div class="qcheckbox">
+                        <div class="qcheckbox" id="cinderve5">
                           <label>5.
                             <input type="checkbox" value="">
                           </label>
@@ -1254,7 +1425,7 @@ Test encrypted volume
               <div class="panel-body">
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <div class="qcheckbox">
+                    <div class="qcheckbox" id="heat1">
                       <label>1.
                         <input type="checkbox" value="">
                       </label>
@@ -1280,7 +1451,7 @@ Test encrypted volume
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <div class="qcheckbox">
+                    <div class="qcheckbox" id="heat2">
                       <label>2.
                         <input type="checkbox" value="">
                       </label>
