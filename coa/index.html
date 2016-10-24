@@ -3,6 +3,34 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function(){
+          $("#keystone-sectionid").hide();
+          $("#compute-sectionid").hide();
+          $("#glance-sectionid").hide();
+          $("#cinder-sectionid").hide();
+          $("#swift-sectionid").hide();
+          $("#heat-sectionid").hide();
+        
+          $("#keystone-checkboxid").click(function(){
+              $("#keystone-sectionid").toggle();
+          });
+          $("#compute-checkboxid").click(function(){
+              $("#compute-sectionid").toggle();
+          });
+          $("#glance-checkboxid").click(function(){
+              $("#glance-sectionid").toggle();
+          });
+          $("#cinder-checkboxid").click(function(){
+              $("#cinder-sectionid").toggle();
+          });
+          $("#heat-checkboxid").click(function(){
+              $("#heat-sectionid").toggle();
+          });
+        
+      
+      });
+    </script>
   </head><body>
     <div class="container">
       <h2>COA exam simulation</h2>
@@ -16,17 +44,71 @@
     <div class="section">
       <div class="container">
         <div class="row">
+          <div class="col-md-12"></div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">Choose which section fo you want to practice:</div>
+        <div class="row">
+          <div class="col-md-4">
+            <form>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" class="keystone" id="keystone-checkboxid">Keystone</label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="compute-checkboxid" class="compute">Compute</label>
+              </div>
+              <div class="checkbox disabled">
+                <label>
+                  <input type="checkbox" class="glance" id="glance-checkboxid">Glance</label>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-4">
+            <form>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" class="cinder" id="cinder-checkboxid">Cinder</label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" class="swift" id="swift-checkboxid">Swift</label>
+              </div>
+              <div class="checkbox disabled">
+                <label>
+                  <input type="checkbox" class="heat" id="heat-checkboxid">Heat</label>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
           <div class="col-md-12">
-            <div class="panel panel-primary">
+            <div class="panel panel-primary" id="keystone-sectionid">
               <div class="panel-heading">
                 <h3 class="panel-title">Identity</h3>
               </div>
               <div class="panel-body">
                 <div class="panel panel-default">
                   <div class="panel-heading">
+                    <class="checkbox">
+                      <label>
+                        <input type="checkbox" value="">
+                      </label>
+                    </class="checkbox">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-              Having an old rc file and without downloading rc file from project &gt; Access and security &gt; API access &gt;, make sure to build rc file for both tenants admin &amp; demo
+
+
+                        Having an old rc file and without downloading rc file from project &gt; Access and security &gt; API access &gt;, make sure to build rc file for both tenants admin &amp; demo
               </a>
                     </h4>
                   </div>
@@ -38,12 +120,19 @@
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-Creating a project named "new-project1", a user "new-user1" with password "new-user1", and assign a new role role "manager" to that user.
+                    <class="checkbox">
+                      <label>
+                        <input type="checkbox" value="">
+                      </label>
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+
+
+                        Creating a project named "new-project1", a user "new-user1" with password "new-user1", and assign a new role role "manager" to that user.
 
               </a>
-                    </h4>
+                      </h4>
+                    </class="checkbox">
                   </div>
                   <div id="collapse2" class="panel-collapse collapse">
                     <div class="panel-body">
@@ -66,21 +155,28 @@ Creating a project named "new-project1", a user "new-user1" with password "new-u
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="panel panel-primary">
+            <div class="panel panel-primary" id="compute-sectionid">
               <div class="panel-heading">
                 <h3 class="panel-title">Compute</h3>
               </div>
               <div class="panel-body">
                 <div class="panel panel-default">
                   <div class="panel-heading">
+                    <class="checkbox">
+                      <label>
+                        <input type="checkbox" value="">
+                      </label>
+                    </class="checkbox">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#compute1">
-From demo account, generate a public keypair named mypubkey1 for use with openstack instances
+
+
+                        From demo account, generate a public keypair named mypubkey1 for use with openstack instances
 
               </a>
                     </h4>
                   </div>
-                  <div id="compute1" class="panel-collapse collapse">
+                  <div class="panel-collapse collapse" id="compute1">
                     <div class="panel-body">
                       <p>nova keypair-add key1 key1.pem
                         <br>chmod 600 key1.pem
@@ -92,7 +188,13 @@ From demo account, generate a public keypair named mypubkey1 for use with openst
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#compute2">
-<p>From admin account, create a new flavor named m1.extra_tiny with:</p>
+<p>
+                        <class="checkbox">
+                        <label>
+                          <input type="checkbox" value=""></label>
+                      </class="checkbox">
+                        
+From admin account, create a new flavor named m1.extra_tiny with:</p>
 <ul>
 <li>RAM: 64mb</li>
 <li>Root disk size: 0</li>
@@ -112,8 +214,14 @@ From demo account, generate a public keypair named mypubkey1 for use with openst
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
+                    <class="checkbox">
+                      <label>
+                        <input type="checkbox" value="">
+                      </label>
+                    </class="checkbox">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#compute3">
+
 
 Allow the tenant (project) "demo" to access the flavor
 
@@ -133,8 +241,14 @@ Allow the tenant (project) "demo" to access the flavor
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
+                    <class="checkbox">
+                      <label>
+                        <input type="checkbox" value="">
+                      </label>
+                    </class="checkbox">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#compute4">
+
 
 Add new rules to the default security group "default" to allow access instances from internet through SSH, http and ICMP.
 
@@ -155,6 +269,10 @@ Add new rules to the default security group "default" to allow access instances 
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#compute5">
+                      <class="checkbox">
+                        <label>
+                          <input type="checkbox" value=""></label>
+                      </class="checkbox">
 
 Provision the following instance:
 <ul>
@@ -178,6 +296,10 @@ Provision the following instance:
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#compute6">
+                      <class="checkbox">
+                        <label>
+                          <input type="checkbox" value=""></label>
+                      </class="checkbox">
 
 Log to the machine console using the keypair key1
 
@@ -195,6 +317,10 @@ Log to the machine console using the keypair key1
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#compute7">
+                      <class="checkbox">
+                        <label>
+                          <input type="checkbox" value=""></label>
+                      </class="checkbox">
 
 Create a snapshot named "instance2-snapshot" from the running image instance2
 
@@ -203,10 +329,930 @@ Create a snapshot named "instance2-snapshot" from the running image instance2
                   </div>
                   <div id="compute7" class="panel-collapse collapse">
                     <div class="panel-body">
-<p>nova image-create {instance2} {instance2-snapshot}
-  <br>nova delete {instance2}</p>
-                    
+                      <p>nova image-create {instance2} {instance2-snapshot}
+                        <br>nova delete {instance2}</p>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-primary" id="glance-sectionid">
+              <div class="panel-heading">
+                <h3 class="panel-title">Glance</h3>
+              </div>
+              <div class="panel-body">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#glance1">
+                      <class="checkbox">
+                        <label>
+                          <input type="checkbox" value=""></label>
+                      </class="checkbox">
+
+Retrieve Ubuntu cloud image file from the following link:
+
+</a>
+                      <p>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#compute6"></a>
+                        <a href="https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img">https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img</a>
+                      </p>
+                    </h4>
+                  </div>
+                  <div id="glance1" class="panel-collapse collapse">
+                    <div class="panel-body">wget https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img</div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#glance2">
+                      <class="checkbox">
+                        <label>
+                          <input type="checkbox" value=""></label>
+                      </class="checkbox">
+
+Create an image named "ubuntu-trusty" from the downoaded image file
+
+              </a>
+                    </h4>
+                  </div>
+                  <div id="glance2" class="panel-collapse collapse">
+                    <div class="panel-body">glance image-create --progress --name ubuntu-trusty --file trusty-server-cloudimg-amd64-disk1.img
+                      --disk-format qcow2 --container-format bare</div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#glance3">
+                      <class="checkbox">
+                        <label>
+                          <input type="checkbox" value=""></label>
+                      </class="checkbox">
+
+Start an instance named "u1" from the following parameters:
+                      <ul>
+                        <li>image: "ubuntu-trusty"</li>
+                        <li>flavor: m1.small</li>
+                        <li>key: key1</li>
+                        <li>security group: default</li>
+                      </ul>                        
+
+              </a>
+                    </h4>
+                  </div>
+                  <div id="glance3" class="panel-collapse collapse">
+                    <div class="panel-body">nova boot u2 --image ubuntu-trusty --flavor m1.small --key-name key1 --security-group
+                      default</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-primary" id="cinder-sectionid">
+              <div class="panel-heading">
+                <h3 class="panel-title">Cinder</h3>
+              </div>
+              <div class="panel-body">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title" contenteditable="true">Instance snapshots</h3>
+                  </div>
+                  <div class="panel-body">
+                    <p></p>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder11">
+                      <class="checkbox">
+                        <label>
+                          <input type="checkbox" value=""></label>
+                      </class="checkbox">
+
+Create an instance "instance1" from cirros-0.3.4-x86_64-uec image
+<li>image: cirros-0.3.4-x86_64-uec</li>
+<li>flavor: m1.tiny</li>
+<li>keypair: key1</li>
+<li>security group: new-secgroup</li>
+
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder11" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <p>Make sure, you have a key and the appropriate ICMP and SSH rules in place:</p>
+                          <p>nova keypair-add key1 &gt; key1.pem
+                            <br>chmod 600 key1.pem
+                            <br>nova keypair-list</p>
+                          <p>nova secgroup-list
+                            <br>nova secgroup-list-rules new_secgroup
+                            <br>nova secgroup-add-rule new_secgroup tcp 22 22 0.0.0.0/0
+                            <br>nova secgroup-add-rule new_secgroup icmp -1 -1 0.0.0.0/0
+                            <br>nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key_name
+                            key1 instance1</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder12">
+                      <class="checkbox">
+                        <label>
+                          <input type="checkbox" value=""></label>
+                      </class="checkbox">
+
+nside the home directory of "instance2" create a file testfile.txt
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder12" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <p>ssh -i key1.pem cirros@{ip}
+                            <instance2-ip>
+                              <br>touch testfile.txt</instance2-ip>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder13">
+                      <class="checkbox">
+                        <label>
+                          <input type="checkbox" value=""></label>
+                      </class="checkbox">
+
+Take a snapshot of instance "instance2", name it "snapshot-of-instance2"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder13" class="panel-collapse collapse">
+                        <div class="panel-body">nova image-create {snapshot-id} {snapshot-of-instance1}</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder14">
+                      <class="checkbox">
+                        <label>
+                          <input type="checkbox" value=""></label>
+                      </class="checkbox">
+
+Terminate the instance "instance2"
+
+
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder14" class="panel-collapse collapse">
+                        <div class="panel-body">nova delete {instance1-id}</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder15">
+                      <class="checkbox">
+                        <label>
+                          <input type="checkbox" value=""></label>
+                      </class="checkbox">
+
+Create an instance from "snapshot-of-instance2" and name it "instance-from-snapshot"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder15" class="panel-collapse collapse">
+                        <div class="panel-body">nova boot --flavor m1.tiny --key key1 --security-groups new-secgroup --snapshot
+                          {snapshot} {instance2-from-instance1}</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
+                      <class="checkbox">
+                        <label>
+                          <input type="checkbox" value=""></label>
+                      </class="checkbox">
+Inside the home directory of "instance-from-snapshot" verify the presence of the file "testfile.txt"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder16" class="panel-collapse collapse">
+                        <div class="panel-body">--- answer ---</div>
+                      </div>
+                    </div>
+                    <p></p>
+                  </div>
+                </div>
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title" draggable="true">Volume snapshots</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>1.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder21">
+
+Create a new empty volume "vol1" of a 1GB size
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder21" class="panel-collapse collapse">
+                        <div class="panel-body">cinder create --display-name {demo-volume1} {1}</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>2.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder22">
+
+Create an instance "instance1" from cirros-0.3.4-x86_64-uec image
+<ul>
+<li>image: cirros-0.3.4-x86_64-uec</li>
+<li>flavor: m1.tiny</li>
+<li>keypair: key1</li>
+<li>security group: new-secgroup</li>
+</ul>
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder22" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <p>Make sure, you have a key and the appropriate ICMP and SSH rules in place:
+                            <br>nova keypair-add key1 &amp;gt; key1.pem
+                            <br>chmod 600 key1.pem
+                            <br>nova keypair-list</p>
+                          <p>nova secgroup-list
+                            <br>nova secgroup-list-rules new_secgroup
+                            <br>nova secgroup-add-rule new_secgroup tcp 22 22 0.0.0.0/0
+                            <br>nova secgroup-add-rule new_secgroup icmp -1 -1 0.0.0.0/0</p>
+                          <p>nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key_name
+                            key1 --security-groups new-secgroup instance1</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>3.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder23">
+
+Attach the created image "vol1" to the instance "instance1" and mount it to /mnt/vdb
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder23" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <p>nova volume-attach &lt;instance-id&gt; &lt;vol-id&gt; /dev/vdb`
+                            <br>ssh -i key1.pem cirros@10.0.0.3
+                            <br>sudo fdisk /dev/vdb
+                            <br>sudo mount /dev/vdb /mnt</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>4.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder24">
+
+inside the attached volume (/mnt/vdb) create a file testfile.txt
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder24" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <p>touch /mnt/vdb/testfile.txt
+                            <br>sync &amp;&amp; sleep 2</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>5.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder25">
+
+On the blockstorage node /dev/stack-volumes/volume-*
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder25" class="panel-collapse collapse">
+                        <div class="panel-body">strings /dev/stack-volumes/volume-* | grep "testfile.txt"</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>6.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder26">
+
+Detach the volume "vol1" from the instance "instance1"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder23" class="panel-collapse collapse">
+                        <div class="panel-body">nova volume-detach
+                          <instance-id>
+                            <vol-id>/dev/vdb</vol-id>
+                          </instance-id>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>7.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder27">
+
+Take a snapshot of "vol1", name it "snapshot-of-vol1"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder27" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <p>cinder snapshot-create --name {snapshot-name} {vol-id}
+                            <br>cinder list
+                            <br>cinder snapshot-list</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>8.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder28">
+
+Create a volume from the snapshot
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder28" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <p>cinder create --snapshot-id {snapshot-id} --name {new-vol}
+                            <br>cinder list</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>9.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder29">
+
+Reattach the first volume "vol1" to the instance "instance1"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder29" class="panel-collapse collapse">
+                        <div class="panel-body">nova volume-attach {instance-id} {vol-id}</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>10.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
+
+Delete the previously created file "testfile.txt"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder30" class="panel-collapse collapse">
+                        <div class="panel-body">--- answer ---</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>11.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder31">
+
+detach the colume "vol1" from the instance "instance1"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder31" class="panel-collapse collapse">
+                        <div class="panel-body">nova volume-detach {instance-id} {vol-id} /dev/vdb</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>12.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder32">
+
+Attach the created volume "new-vol" to the instance "instance1"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder32" class="panel-collapse collapse">
+                        <div class="panel-body">nova volume-attach {instance-id} {vol-id}</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>13.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
+
+Inside the attached volume verify the presence of the file "testfile.txt"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinder33" class="panel-collapse collapse">
+                        <div class="panel-body">--- answer ---</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Volume backup</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>1.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb1">
+
+Create a new empty volume "vol2" of a 1GB size
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinderb1" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <p>cinder create --display-name {demo-volume1} {1}
+                            <br>cinder list</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>2.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb2">
+
+Create an instance "instance3"
+<li>image: cirros-0.3.4-x86_64-uec</li>
+<li>flavor: m1.tiny</li>
+<li>keypair: key1</li>
+<li>security group: default</li>
+
+<p>&nbsp;</p>
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinderb2" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <p>nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key_name
+                            key1 instance3
+                            <br>nova list --security-groups default</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>3.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb3">
+
+Attach the volume "vol2" it to the instance "instance3"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinderb3" class="panel-collapse collapse">
+                        <div class="panel-body">nova volume-attach {253619cf-127c-46a1-a2aa-a273cedf6a85} {d-847c-fde00ea96649}
+                          /dev/vdb</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>4.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
+
+Inside the home directory of the mounted partition inside "instance3" create a file testfile.txt
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="-" class="panel-collapse collapse">
+                        <div class="panel-body">--- answer ---</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>5.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb5">
+
+Detach the volume from the running instance
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinderb5" class="panel-collapse collapse">
+                        <div class="panel-body">nova volume-detach {253619cf-127c-46a1-a2aa-a273cedf6a85} {2429b44b- cc42-4ebd-847c-fde00ea96649}</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>6.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb6">
+
+Backup the volume "vol2" into a volume "vol2-backup"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinderb6" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <p>cinder backup-show
+                            <br>cinder backup-list
+                            <br>cinder backup-create {vol-id}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>7.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb7">
+
+Remove the original volume "vol2"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinderb7" class="panel-collapse collapse">
+                        <div class="panel-body">cinder delete {vol-id}</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>8.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb8">
+
+Restore the backed up volume "vol2-backup"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinderb8" class="panel-collapse collapse">
+                        <div class="panel-body">cinder backup-restore {vol-id}</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>9.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb9">
+
+ Delete the backup volume "vol2-backup"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinderb9" class="panel-collapse collapse">
+                        <div class="panel-body">cinder backup-delete {backup-vol-id}</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>10.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb10">
+
+Attach it to the running instance "instance3"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinderb10" class="panel-collapse collapse">
+                        <div class="panel-body">nova volume-detach {253619cf-127c-46a1-a2aa-a273cedf6a85 2429b44b} {cc42-4ebd-847c-fde00ea96649}
+                          /dev/vdb</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>11.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
+
+iInside the mounted partition, make sure the file "testfile.txt" exists
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="-" class="panel-collapse collapse">
+                        <div class="panel-body">--- answer ---</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Volume encryption</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>1.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderve1">
+
+Create the encrypted volume "encrypted-vol" (LUKS volume) of 1GB size
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinderve1" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <br>cinder create --display-name 'encrypted volume' --volume-type LUKS 1
+                          <br>cinder list</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>2.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderve2">
+
+Create an instance "instance4"
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinderve2" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <br>chmod 600 key1.pem
+                          <br>nova keypair-add key1 &gt; key1.pem
+                          <br>nova keypair-list
+                          <br>
+                          <br>Security rule
+                          <br>nova secgroup-create new_secgroup "comments"
+                          <br>nova secgroup-add-rule new_secgroup tcp 22 22 0.0.0.0/0
+                          <br>nova secgroup-add-rule new_secgroup icmp -1 -1 0.0.0.0/0
+                          <br>
+                          <br>nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key_name
+                          key1 --security-group new_secgroup instance4
+                          <br>
+                          <br>nova list
+                          <br>ssh -i {ssh-key.pem} cirros@X.X.X.X</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>3.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderve3">
+
+Attach the encrypted volume to the machine
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinderve3" class="panel-collapse collapse">
+                        <div class="panel-body">nova volume-attach {253619cf-127c-46a1-a2aa-a273cedf6a85} {2429b44b-cc42-4ebd-847c-fde00ea96649}
+                          /dev/vdb</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>4.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderve4">
+
+Create a file "testfile.txt" and syncronize the operations
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinderve4" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <br>touch /mnt/vdb/testfile.txt
+                          <br>sync &amp;&amp; sleep 2</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <class="checkbox">
+                          <label>5.
+                            <input type="checkbox" value="">
+                          </label>
+                        </class="checkbox">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderve5">
+
+Test encrypted volume
+
+              </a>
+                        </h4>
+                      </div>
+                      <div id="cinderve5" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <br>On the block storage node directory {/dev/stack-volumes/volume-}
+                          <br>strings {/dev/stack-volumes/volume-*} | grep {"testfile.txt"}
+                          <br>Because the volume is encrypted, you shouldn't be able to see the file.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-primary" id="heat-sectionid">
+              <div class="panel-heading">
+                <h3 class="panel-title">Heat Orchestration</h3>
+              </div>
+              <div class="panel-body">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <class="checkbox">
+                      <label>1.
+                        <input type="checkbox" value="">
+                      </label>
+                    </class="checkbox">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#heat1">
+
+<p>Define a HOT template "basic1.yml" with only the following parameters</p>
+<ul>
+<li>flavor: m1.tiny</li>
+<li>image: cirros-0.3.4-x86_64-uec&nbsp;</li>
+</ul>
+</a>
+                      <p>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#heat1"></a>
+                        <a href="https://github.com/AJNOURI/COA/blob/master/heat-stuff/basic-stack1.md">https://github.com/AJNOURI/COA/blob/master/heat-stuff/basic-stack1.md</a>
+                      </p>
+                    </h4>
+                  </div>
+                  <div id="-" class="panel-collapse collapse">
+                    <div class="panel-body">--- answer ---</div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <class="checkbox">
+                      <label>2.
+                        <input type="checkbox" value="">
+                      </label>
+                    </class="checkbox">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#heat2">
+
+Start the stack defined in the HOT template "basic.yml"
+
+              </a>
+                    </h4>
+                  </div>
+                  <div id="heat2" class="panel-collapse collapse">
+                    <div class="panel-body">heat stack-create -f basic1.yml hot-instance1</div>
                   </div>
                 </div>
               </div>
