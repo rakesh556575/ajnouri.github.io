@@ -5,12 +5,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
       $(document).ready(function(){
-          $("#keystone-sectionid").hide();
+    var progress = 0;
+    var qnumber = $(".qcheckbox").length;
+    var qweight = 100 / qnumber;
+    //window.alert(qweight)
+    window.alert($(".qcheckbox").length);
+        
+
+        $("#keystone-sectionid").hide();
           $("#compute-sectionid").hide();
           $("#glance-sectionid").hide();
           $("#cinder-sectionid").hide();
           $("#swift-sectionid").hide();
           $("#heat-sectionid").hide();
+
+        
         
           $("#keystone-checkboxid").click(function(){
               $("#keystone-sectionid").toggle();
@@ -27,18 +36,35 @@
           $("#heat-checkboxid").click(function(){
               $("#heat-sectionid").toggle();
           });
-        
+
+//######################################
+    function progressbar(id) {
+        if ($(id).is(":checked") == true) {
+        //  alert('1');
+        progress = progress+5;
+        $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
+        }
+        else if ($(id).is(":checked") == false) {
+        //  alert('2');
+        progress = progress-5;
+        $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
+        }      
+    }
+//######################################
+
+    $("#identity1 input").on('change', function(){
+      progressbar("#identity1 input")
+    });
+    $("#identity2 input").on('change', function(){
+      progressbar("#identity2 input")
+    });
       
+    
       });
     </script>
   </head><body>
     <div class="container">
-      <h2>COA exam simulation</h2>
-      <p>
-        <strong>Note:</strong>The
-        <strong>data-parent</strong>attribute makes sure that all collapsible elements
-        under the specified parent will be closed when one of the collapsible item
-        is shown.</p>
+      <h2 class="text-center">COA exam simulation</h2>
       <div class="panel-group" id="accordion"></div>
     </div>
     <div class="section">
@@ -50,7 +76,7 @@
     </div>
     <div class="section">
       <div class="container">
-        <div class="row">Choose which section fo you want to practice:</div>
+        <div class="row">Choose which section you want to practice:</div>
         <div class="row">
           <div class="col-md-4">
             <form>
@@ -62,7 +88,7 @@
                 <label>
                   <input type="checkbox" id="compute-checkboxid" class="compute">Compute</label>
               </div>
-              <div class="checkbox disabled">
+              <div class="checkbox ">
                 <label>
                   <input type="checkbox" class="glance" id="glance-checkboxid">Glance</label>
               </div>
@@ -78,7 +104,7 @@
                 <label>
                   <input type="checkbox" class="swift" id="swift-checkboxid">Swift</label>
               </div>
-              <div class="checkbox disabled">
+              <div class="checkbox">
                 <label>
                   <input type="checkbox" class="heat" id="heat-checkboxid">Heat</label>
               </div>
@@ -92,6 +118,13 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
+            <div class="progress" id="progressbarid">
+              <div class="progress-bar" role="progressbar" style="width: 0%;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
             <div class="panel panel-primary" id="keystone-sectionid">
               <div class="panel-heading">
                 <h3 class="panel-title">Identity</h3>
@@ -99,20 +132,20 @@
               <div class="panel-body">
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <class="checkbox">
-                      <label>
+                    <div class="qcheckbox" id="identity1">
+                      <label>1.
                         <input type="checkbox" value="">
                       </label>
-                    </class="checkbox">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
 
 
                         Having an old rc file and without downloading rc file from project &gt; Access and security &gt; API access &gt;, make sure to build rc file for both tenants admin &amp; demo
               </a>
-                    </h4>
+                      </h4>
+                    </div>
                   </div>
-                  <div id="collapse1" class="panel-collapse collapse in">
+                  <div class="panel-collapse collapse in" id="collapse1">
                     <div class="panel-body">Go to identity &gt; project, get project id from old admin-openrc.sh,
                       replace tentant id with project admin id to build admin credential file
                       and demo credential file and finally source it: source demorc.sh</div>
@@ -120,8 +153,8 @@
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <class="checkbox">
-                      <label>
+                    <div class="qcheckbox" id="identity2">
+                      <label>2.
                         <input type="checkbox" value="">
                       </label>
                       <h4 class="panel-title">
@@ -132,7 +165,7 @@
 
               </a>
                       </h4>
-                    </class="checkbox">
+                    </div>
                   </div>
                   <div id="collapse2" class="panel-collapse collapse">
                     <div class="panel-body">
@@ -162,19 +195,19 @@
               <div class="panel-body">
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <class="checkbox">
-                      <label>
+                    <div class="qcheckbox">
+                      <label>1.
                         <input type="checkbox" value="">
                       </label>
-                    </class="checkbox">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#compute1">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#compute1">
 
 
                         From demo account, generate a public keypair named mypubkey1 for use with openstack instances
 
               </a>
-                    </h4>
+                      </h4>
+                    </div>
                   </div>
                   <div class="panel-collapse collapse" id="compute1">
                     <div class="panel-body">
@@ -186,13 +219,14 @@
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#compute2">
+                    <div class="qcheckbox">
+                      <label>2.
+                        <input type="checkbox" value="">
+                      </label>
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#compute2">
 <p>
-                        <class="checkbox">
-                        <label>
-                          <input type="checkbox" value=""></label>
-                      </class="checkbox">
+
                         
 From admin account, create a new flavor named m1.extra_tiny with:</p>
 <ul>
@@ -202,7 +236,8 @@ From admin account, create a new flavor named m1.extra_tiny with:</p>
 </ul>
 
               </a>
-                    </h4>
+                      </h4>
+                    </div>
                   </div>
                   <div id="compute2" class="panel-collapse collapse">
                     <div class="panel-body">
@@ -214,19 +249,19 @@ From admin account, create a new flavor named m1.extra_tiny with:</p>
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <class="checkbox">
-                      <label>
+                    <div class="qcheckbox">
+                      <label>3.
                         <input type="checkbox" value="">
                       </label>
-                    </class="checkbox">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#compute3">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#compute3">
 
 
 Allow the tenant (project) "demo" to access the flavor
 
               </a>
-                    </h4>
+                      </h4>
+                    </div>
                   </div>
                   <div id="compute3" class="panel-collapse collapse">
                     <div class="panel-body">
@@ -241,19 +276,19 @@ Allow the tenant (project) "demo" to access the flavor
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <class="checkbox">
-                      <label>
+                    <div class="qcheckbox">
+                      <label>4.
                         <input type="checkbox" value="">
                       </label>
-                    </class="checkbox">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#compute4">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#compute4">
 
 
 Add new rules to the default security group "default" to allow access instances from internet through SSH, http and ICMP.
 
               </a>
-                    </h4>
+                      </h4>
+                    </div>
                   </div>
                   <div id="compute4" class="panel-collapse collapse">
                     <div class="panel-body">
@@ -267,12 +302,14 @@ Add new rules to the default security group "default" to allow access instances 
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#compute5">
-                      <class="checkbox">
-                        <label>
-                          <input type="checkbox" value=""></label>
-                      </class="checkbox">
+                    <div class="qcheckbox">
+                      <label>5.
+                        <input type="checkbox" value="">
+                      </label>
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#compute5">
+
+                        
 
 Provision the following instance:
 <ul>
@@ -283,7 +320,8 @@ Provision the following instance:
 </ul>
 
               </a>
-                    </h4>
+                      </h4>
+                    </div>
                   </div>
                   <div id="compute5" class="panel-collapse collapse">
                     <div class="panel-body">
@@ -294,17 +332,19 @@ Provision the following instance:
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#compute6">
-                      <class="checkbox">
-                        <label>
-                          <input type="checkbox" value=""></label>
-                      </class="checkbox">
+                    <div class="qcheckbox">
+                      <label>6.
+                        <input type="checkbox" value="">
+                      </label>
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#compute6">
+
 
 Log to the machine console using the keypair key1
 
               </a>
-                    </h4>
+                      </h4>
+                    </div>
                   </div>
                   <div id="compute6" class="panel-collapse collapse">
                     <div class="panel-body">
@@ -315,17 +355,19 @@ Log to the machine console using the keypair key1
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#compute7">
-                      <class="checkbox">
-                        <label>
-                          <input type="checkbox" value=""></label>
-                      </class="checkbox">
+                    <div class="qcheckbox">
+                      <label>7.
+                        <input type="checkbox" value="">
+                      </label>
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#compute7">
+
 
 Create a snapshot named "instance2-snapshot" from the running image instance2
 
               </a>
-                    </h4>
+                      </h4>
+                    </div>
                   </div>
                   <div id="compute7" class="panel-collapse collapse">
                     <div class="panel-body">
@@ -345,10 +387,10 @@ Create a snapshot named "instance2-snapshot" from the running image instance2
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#glance1">
-                      <class="checkbox">
+                      <div class="qcheckbox">
                         <label>
                           <input type="checkbox" value=""></label>
-                      </class="checkbox">
+                      </div>
 
 Retrieve Ubuntu cloud image file from the following link:
 
@@ -367,10 +409,10 @@ Retrieve Ubuntu cloud image file from the following link:
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#glance2">
-                      <class="checkbox">
+                      <div class="qcheckbox">
                         <label>
                           <input type="checkbox" value=""></label>
-                      </class="checkbox">
+                      </div>
 
 Create an image named "ubuntu-trusty" from the downoaded image file
 
@@ -386,10 +428,10 @@ Create an image named "ubuntu-trusty" from the downoaded image file
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#glance3">
-                      <class="checkbox">
+                      <div class="qcheckbox">
                         <label>
                           <input type="checkbox" value=""></label>
-                      </class="checkbox">
+                      </div>
 
 Start an instance named "u1" from the following parameters:
                       <ul>
@@ -424,10 +466,10 @@ Start an instance named "u1" from the following parameters:
                       <div class="panel-heading">
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder11">
-                      <class="checkbox">
+                      <div class="qcheckbox">
                         <label>
                           <input type="checkbox" value=""></label>
-                      </class="checkbox">
+                      </div>
 
 Create an instance "instance1" from cirros-0.3.4-x86_64-uec image
 <li>image: cirros-0.3.4-x86_64-uec</li>
@@ -458,10 +500,10 @@ Create an instance "instance1" from cirros-0.3.4-x86_64-uec image
                       <div class="panel-heading">
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder12">
-                      <class="checkbox">
+                      <div class="qcheckbox">
                         <label>
                           <input type="checkbox" value=""></label>
-                      </class="checkbox">
+                      </div>
 
 nside the home directory of "instance2" create a file testfile.txt
 
@@ -481,10 +523,10 @@ nside the home directory of "instance2" create a file testfile.txt
                       <div class="panel-heading">
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder13">
-                      <class="checkbox">
+                      <div class="qcheckbox">
                         <label>
                           <input type="checkbox" value=""></label>
-                      </class="checkbox">
+                      </div>
 
 Take a snapshot of instance "instance2", name it "snapshot-of-instance2"
 
@@ -499,10 +541,10 @@ Take a snapshot of instance "instance2", name it "snapshot-of-instance2"
                       <div class="panel-heading">
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder14">
-                      <class="checkbox">
+                      <div class="qcheckbox">
                         <label>
                           <input type="checkbox" value=""></label>
-                      </class="checkbox">
+                      </div>
 
 Terminate the instance "instance2"
 
@@ -519,10 +561,10 @@ Terminate the instance "instance2"
                       <div class="panel-heading">
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder15">
-                      <class="checkbox">
+                      <div class="qcheckbox">
                         <label>
                           <input type="checkbox" value=""></label>
-                      </class="checkbox">
+                      </div>
 
 Create an instance from "snapshot-of-instance2" and name it "instance-from-snapshot"
 
@@ -538,10 +580,10 @@ Create an instance from "snapshot-of-instance2" and name it "instance-from-snaps
                       <div class="panel-heading">
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
-                      <class="checkbox">
+                      <div class="qcheckbox">
                         <label>
                           <input type="checkbox" value=""></label>
-                      </class="checkbox">
+                      </div>
 Inside the home directory of "instance-from-snapshot" verify the presence of the file "testfile.txt"
 
               </a>
@@ -554,18 +596,18 @@ Inside the home directory of "instance-from-snapshot" verify the presence of the
                     <p></p>
                   </div>
                 </div>
-                <div class="panel panel-primary">
+                <div class="btn-link panel panel-primary">
                   <div class="panel-heading">
                     <h3 class="panel-title" draggable="true">Volume snapshots</h3>
                   </div>
                   <div class="panel-body">
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>1.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder21">
 
@@ -580,11 +622,11 @@ Create a new empty volume "vol1" of a 1GB size
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>2.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder22">
 
@@ -616,11 +658,11 @@ Create an instance "instance1" from cirros-0.3.4-x86_64-uec image
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>3.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder23">
 
@@ -640,11 +682,11 @@ Attach the created image "vol1" to the instance "instance1" and mount it to /mnt
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>4.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder24">
 
@@ -662,11 +704,11 @@ inside the attached volume (/mnt/vdb) create a file testfile.txt
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>5.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder25">
 
@@ -681,11 +723,11 @@ On the blockstorage node /dev/stack-volumes/volume-*
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>6.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder26">
 
@@ -704,11 +746,11 @@ Detach the volume "vol1" from the instance "instance1"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>7.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder27">
 
@@ -727,11 +769,11 @@ Take a snapshot of "vol1", name it "snapshot-of-vol1"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>8.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder28">
 
@@ -749,11 +791,11 @@ Create a volume from the snapshot
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>9.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder29">
 
@@ -768,11 +810,11 @@ Reattach the first volume "vol1" to the instance "instance1"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>10.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
 
@@ -787,11 +829,11 @@ Delete the previously created file "testfile.txt"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>11.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder31">
 
@@ -806,11 +848,11 @@ detach the colume "vol1" from the instance "instance1"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>12.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinder32">
 
@@ -825,11 +867,11 @@ Attach the created volume "new-vol" to the instance "instance1"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>13.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
 
@@ -851,11 +893,11 @@ Inside the attached volume verify the presence of the file "testfile.txt"
                   <div class="panel-body">
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>1.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinderb1">
 
@@ -873,11 +915,11 @@ Create a new empty volume "vol2" of a 1GB size
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>2.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinderb2">
 
@@ -902,11 +944,11 @@ Create an instance "instance3"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>3.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinderb3">
 
@@ -922,11 +964,11 @@ Attach the volume "vol2" it to the instance "instance3"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>4.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
 
@@ -941,11 +983,11 @@ Inside the home directory of the mounted partition inside "instance3" create a f
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>5.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinderb5">
 
@@ -960,11 +1002,11 @@ Detach the volume from the running instance
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>6.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinderb6">
 
@@ -983,11 +1025,11 @@ Backup the volume "vol2" into a volume "vol2-backup"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>7.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinderb7">
 
@@ -1002,11 +1044,11 @@ Remove the original volume "vol2"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>8.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinderb8">
 
@@ -1021,11 +1063,11 @@ Restore the backed up volume "vol2-backup"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>9.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinderb9">
 
@@ -1040,11 +1082,11 @@ Restore the backed up volume "vol2-backup"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>10.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinderb10">
 
@@ -1060,11 +1102,11 @@ Attach it to the running instance "instance3"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>11.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
 
@@ -1086,11 +1128,11 @@ iInside the mounted partition, make sure the file "testfile.txt" exists
                   <div class="panel-body">
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>1.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinderve1">
 
@@ -1107,11 +1149,11 @@ Create the encrypted volume "encrypted-vol" (LUKS volume) of 1GB size
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>2.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinderve2">
 
@@ -1140,11 +1182,11 @@ Create an instance "instance4"
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>3.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinderve3">
 
@@ -1160,11 +1202,11 @@ Attach the encrypted volume to the machine
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>4.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinderve4">
 
@@ -1181,11 +1223,11 @@ Create a file "testfile.txt" and syncronize the operations
                     </div>
                     <div class="panel panel-default">
                       <div class="panel-heading">
-                        <class="checkbox">
+                        <div class="qcheckbox">
                           <label>5.
                             <input type="checkbox" value="">
                           </label>
-                        </class="checkbox">
+                        </div>
                         <h4 class="panel-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#cinderve5">
 
@@ -1212,11 +1254,11 @@ Test encrypted volume
               <div class="panel-body">
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <class="checkbox">
+                    <div class="qcheckbox">
                       <label>1.
                         <input type="checkbox" value="">
                       </label>
-                    </class="checkbox">
+                    </div>
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#heat1">
 
@@ -1238,11 +1280,11 @@ Test encrypted volume
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <class="checkbox">
+                    <div class="qcheckbox">
                       <label>2.
                         <input type="checkbox" value="">
                       </label>
-                    </class="checkbox">
+                    </div>
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#heat2">
 
