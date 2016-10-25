@@ -9,6 +9,8 @@
             var qnumber = $(".qcheckbox").length;
             var qweight = 100 / qnumber;
             var checked = 0;
+            var tasks = 0;
+            
             //var qweight = qweightf.toFixed(3)
             /* window.alert(qweight);
             window.alert($(".qcheckbox").length); */
@@ -49,15 +51,16 @@
                 if ($(id).is(":checked") == true) {
                 //  alert('1');
                 progress = progress+qweight;
-                //checked = checked + 1
-                $('.badge').text(progress);
+                tasks = tasks + 1;
+                $('.badge').text(tasks + " / " + qnumber);
                 $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
                 finished(progress);
                 }
                 else if ($(id).is(":checked") == false) {
                 //  alert('2');
                 progress = progress-qweight;
-                $('.badge').text(progress);
+                tasks = tasks - 1;
+                $('.badge').text(tasks + " / " + qnumber);
                 //checked = checked - 1
                 $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
                 }      
