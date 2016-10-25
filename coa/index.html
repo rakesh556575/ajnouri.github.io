@@ -9,6 +9,7 @@
             var qnumber = $(".qcheckbox").length;
             var qweight = 100 / qnumber;
             var checked = 0;
+            //var qweight = qweightf.toFixed(3)
             /* window.alert(qweight);
             window.alert($(".qcheckbox").length); */
                 
@@ -43,11 +44,13 @@
                 //  alert('1');
                 progress = progress+qweight;
                 //checked = checked + 1
+                $('.badge').text(progress);
                 $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
                 }
                 else if ($(id).is(":checked") == false) {
                 //  alert('2');
                 progress = progress-qweight;
+                $('.badge').text(progress);
                 //checked = checked - 1
                 $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
                 }      
@@ -224,13 +227,26 @@
     <div class="section">
       <div class="container">
         <div class="row">
-          <div class="col-md-12"></div>
+          <div class="col-md-12">
+            <div class="progress" id="progressbarid" data-spy="affix" data-offset-top="20">
+              <div class="progress-bar" role="progressbar" style="width: 0%;"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="section">
       <div class="container">
-        <div class="row">Choose which section you want to practice:</div>
+        <div class="row">
+          <div class="col-md-12">
+            <a href="#">Completed tasks <span class="badge"> </span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">Select the sections you want to make visible:</div>
         <div class="row">
           <div class="col-md-4">
             <form>
@@ -271,11 +287,7 @@
     <div class="section">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <div class="progress" id="progressbarid">
-              <div class="progress-bar" role="progressbar" style="width: 0%;"></div>
-            </div>
-          </div>
+          <div class="col-md-12"></div>
         </div>
         <div class="row">
           <div class="col-md-12">
