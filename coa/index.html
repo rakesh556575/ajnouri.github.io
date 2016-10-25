@@ -12,7 +12,13 @@
             //var qweight = qweightf.toFixed(3)
             /* window.alert(qweight);
             window.alert($(".qcheckbox").length); */
-                
+            function finished(questions) {
+            if (questions > 100) {
+                    $("#myModal").modal('show');
+				}
+            }
+              
+
                   // By default hide all sections
                   $("#keystone-sectionid").hide();
                   $("#compute-sectionid").hide();
@@ -46,6 +52,7 @@
                 //checked = checked + 1
                 $('.badge').text(progress);
                 $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
+                finished(progress);
                 }
                 else if ($(id).is(":checked") == false) {
                 //  alert('2');
@@ -287,7 +294,25 @@
     <div class="section">
       <div class="container">
         <div class="row">
-          <div class="col-md-12"></div>
+          <div class="col-md-12">
+            <div id="myModal" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Congratulations!</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>You have finished all exam tasks</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="row">
           <div class="col-md-12">
