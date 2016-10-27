@@ -3,231 +3,246 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+      /* width: 90%;*/
+      .affix {
+          top: 1;
+          width: 90%;
+          z-index: 1;
+      }
+    
+      .affix + .container-fluid {
+          padding-top: 70px;
+      }
+    #fixed-progress {
+    background-color: #F7D358;
+	}
+    </style>
     <script>
       $(document).ready(function(){
-            var progress = 0;
-            var qnumber = $(".qcheckbox").length;
-            var qweight = 100 / qnumber;
-            var checked = 0;
-            var tasks = 0;
-            
-            //var qweight = qweightf.toFixed(3)
-            /* window.alert(qweight);
-            window.alert($(".qcheckbox").length); */
-            function finished(questions) {
-            if (questions > 100) {
-                    $("#myModal").modal('show');
-				}
-            }
-              
-
-                  // By default hide all sections
-                  $("#keystone-sectionid").hide();
-                  $("#compute-sectionid").hide();
-                  $("#glance-sectionid").hide();
-                  $("#cinder-sectionid").hide();
-                  $("#swift-sectionid").hide();
-                  $("#heat-sectionid").hide();
+                    var progress = 0;
+                    var qnumber = $(".qcheckbox").length;
+                    var qweight = 100 / qnumber;
+                    var checked = 0;
+                    var tasks = 0;
+                    
+                    //var qweight = qweightf.toFixed(3)
+                    /* window.alert(qweight);
+                    window.alert($(".qcheckbox").length); */
+                    function finished(questions) {
+                    if (questions > 100) {
+                            $("#myModal").modal('show');
+        				}
+                    }
+                      
         
-        		  // toggle section visibility               
-                  $("#keystone-checkboxid").click(function(){
-                      $("#keystone-sectionid").toggle();
-                  });
-                  $("#compute-checkboxid").click(function(){
-                      $("#compute-sectionid").toggle();
-                  });
-                  $("#glance-checkboxid").click(function(){
-                      $("#glance-sectionid").toggle();
-                  });
-                  $("#cinder-checkboxid").click(function(){
-                      $("#cinder-sectionid").toggle();
-                  });
-                  $("#heat-checkboxid").click(function(){
-                      $("#heat-sectionid").toggle();
-                  });
-        
-        //######################################
-            function progressbar(id) {
-                if ($(id).is(":checked") == true) {
-                //  alert('1');
-                progress = progress+qweight;
-                tasks = tasks + 1;
-                $('.badge').text(tasks + " / " + qnumber);
-                $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
-                finished(progress);
-                }
-                else if ($(id).is(":checked") == false) {
-                //  alert('2');
-                progress = progress-qweight;
-                tasks = tasks - 1;
-                $('.badge').text(tasks + " / " + qnumber);
-                //checked = checked - 1
-                $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
-                }      
-            }
-        //######################################
-        //identity
-            $("#identity1 input").on('change', function(){
-              //alert($(this).attr('id'));
-              progressbar("#identity1 input")
-            });
-            $("#identity2 input").on('change', function(){
-              progressbar("#identity2 input")
-            });
-             
-        //compute
-        $("#compute1 input").on("change", function(){
-        progressbar("#compute1 input")
-        });
-        $("#compute2 input").on("change", function(){
-        progressbar("#compute2 input")
-        });
-        $("#compute3 input").on("change", function(){
-        progressbar("#compute3 input")
-        });
-        $("#compute4 input").on("change", function(){
-        progressbar("#compute4 input")
-        });
-        $("#compute5 input").on("change", function(){
-        progressbar("#compute5 input")
-        });
-        $("#compute6 input").on("change", function(){
-        progressbar("#compute6 input")
-        });
-        $("#compute7 input").on("change", function(){
-        progressbar("#compute7 input")
-        });
-        //glance
-            $("#glance1 input").on('change', function(){
-              progressbar("#glance1 input")
-            });
-            $("#glance2 input").on('change', function(){
-              progressbar("#glance2 input")
-            });
-            $("#glance3 input").on('change', function(){
-              progressbar("#glance3 input")
-            });
-        //cinder instance snapshot
-        $("#cinderis1 input").on("change", function(){
-        progressbar("#cinderis1 input")
-        });
-        $("#cinderis2 input").on("change", function(){
-        progressbar("#cinderis2 input")
-        });
-        $("#cinderis3 input").on("change", function(){
-        progressbar("#cinderis3 input")
-        });
-        $("#cinderis4 input").on("change", function(){
-        progressbar("#cinderis4 input")
-        });
-        $("#cinderis5 input").on("change", function(){
-        progressbar("#cinderis5 input")
-        });
-        $("#cinderis6 input").on("change", function(){
-        progressbar("#cinderis6 input")
-        });
+                          // By default hide all sections
+                          $("#keystone-sectionid").hide();
+                          $("#compute-sectionid").hide();
+                          $("#glance-sectionid").hide();
+                          $("#cinder-sectionid").hide();
+                          $("#swift-sectionid").hide();
+                          $("#heat-sectionid").hide();
                 
-        //cinder volume snapshot
-        $("#cindervs1 input").on("change", function(){
-        progressbar("#cindervs1 input")
-        });
-        $("#cindervs2 input").on("change", function(){
-        progressbar("#cindervs2 input")
-        });
-        $("#cindervs3 input").on("change", function(){
-        progressbar("#cindervs3 input")
-        });
-        $("#cindervs4 input").on("change", function(){
-        progressbar("#cindervs4 input")
-        });
-        $("#cindervs5 input").on("change", function(){
-        progressbar("#cindervs5 input")
-        });
-        $("#cindervs6 input").on("change", function(){
-        progressbar("#cindervs6 input")
-        });
-        $("#cindervs7 input").on("change", function(){
-        progressbar("#cindervs7 input")
-        });
-        $("#cindervs8 input").on("change", function(){
-        progressbar("#cindervs8 input")
-        });
-        $("#cindervs9 input").on("change", function(){
-        progressbar("#cindervs9 input")
-        });
-        $("#cindervs10 input").on("change", function(){
-        progressbar("#cindervs10 input")
-        });
-        $("#cindervs11 input").on("change", function(){
-        progressbar("#cindervs11 input")
-        });
-        $("#cindervs12 input").on("change", function(){
-        progressbar("#cindervs12 input")
-        });
-        $("#cindervs13 input").on("change", function(){
-        progressbar("#cindervs13 input")
-        });
+                		  // toggle section visibility               
+                          $("#keystone-checkboxid").click(function(){
+                              $("#keystone-sectionid").toggle();
+                          });
+                          $("#compute-checkboxid").click(function(){
+                              $("#compute-sectionid").toggle();
+                          });
+                          $("#glance-checkboxid").click(function(){
+                              $("#glance-sectionid").toggle();
+                          });
+                          $("#cinder-checkboxid").click(function(){
+                              $("#cinder-sectionid").toggle();
+                          });
+                          $("#heat-checkboxid").click(function(){
+                              $("#heat-sectionid").toggle();
+                          });
                 
-        //cinder volume backup
-        $("#cinderba1 input").on("change", function(){
-        progressbar("#cinderba1 input")
-        });
-        $("#cinderba2 input").on("change", function(){
-        progressbar("#cinderba2 input")
-        });
-        $("#cinderba3 input").on("change", function(){
-        progressbar("#cinderba3 input")
-        });
-        $("#cinderba4 input").on("change", function(){
-        progressbar("#cinderba4 input")
-        });
-        $("#cinderba5 input").on("change", function(){
-        progressbar("#cinderba5 input")
-        });
-        $("#cinderba6 input").on("change", function(){
-        progressbar("#cinderba6 input")
-        });
-        $("#cinderba7 input").on("change", function(){
-        progressbar("#cinderba7 input")
-        });
-        $("#cinderba8 input").on("change", function(){
-        progressbar("#cinderba8 input")
-        });
-        $("#cinderba9 input").on("change", function(){
-        progressbar("#cinderba9 input")
-        });
-        $("#cinderba10 input").on("change", function(){
-        progressbar("#cinderba10 input")
-        });
-        $("#cinderba11 input").on("change", function(){
-        progressbar("#cinderba11 input")
-        });
-        //cinder volume encryption
-        $("#cinderve1 input").on("change", function(){
-        progressbar("#cinderve1 input")
-        });
-        $("#cinderve2 input").on("change", function(){
-        progressbar("#cinderve2 input")
-        });
-        $("#cinderve3 input").on("change", function(){
-        progressbar("#cinderve3 input")
-        });
-        $("#cinderve4 input").on("change", function(){
-        progressbar("#cinderve4 input")
-        });
-        $("#cinderve5 input").on("change", function(){
-        progressbar("#cinderve5 input")
-        });        
-        //heat     
-        $("#heat1 input").on("change", function(){
-        progressbar("#heat1 input")
-        });
-        $("#heat2 input").on("change", function(){
-        progressbar("#heat2 input")
-        });        
-             
-        //###############        
-              });
+                //######################################
+                    function progressbar(id) {
+                        if ($(id).is(":checked") == true) {
+                        //  alert('1');
+                        progress = progress+qweight;
+                        tasks = tasks + 1;
+                        $('.badge').text(tasks + " / " + qnumber);
+                        $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
+                        finished(progress);
+                        }
+                        else if ($(id).is(":checked") == false) {
+                        //  alert('2');
+                        progress = progress-qweight;
+                        tasks = tasks - 1;
+                        $('.badge').text(tasks + " / " + qnumber);
+                        //checked = checked - 1
+                        $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
+                        }      
+                    }
+                //######################################
+                //identity
+                    $("#identity1 input").on('change', function(){
+                      //alert($(this).attr('id'));
+                      progressbar("#identity1 input")
+                    });
+                    $("#identity2 input").on('change', function(){
+                      progressbar("#identity2 input")
+                    });
+                     
+                //compute
+                $("#compute1 input").on("change", function(){
+                progressbar("#compute1 input")
+                });
+                $("#compute2 input").on("change", function(){
+                progressbar("#compute2 input")
+                });
+                $("#compute3 input").on("change", function(){
+                progressbar("#compute3 input")
+                });
+                $("#compute4 input").on("change", function(){
+                progressbar("#compute4 input")
+                });
+                $("#compute5 input").on("change", function(){
+                progressbar("#compute5 input")
+                });
+                $("#compute6 input").on("change", function(){
+                progressbar("#compute6 input")
+                });
+                $("#compute7 input").on("change", function(){
+                progressbar("#compute7 input")
+                });
+                //glance
+                    $("#glance1 input").on('change', function(){
+                      progressbar("#glance1 input")
+                    });
+                    $("#glance2 input").on('change', function(){
+                      progressbar("#glance2 input")
+                    });
+                    $("#glance3 input").on('change', function(){
+                      progressbar("#glance3 input")
+                    });
+                //cinder instance snapshot
+                $("#cinderis1 input").on("change", function(){
+                progressbar("#cinderis1 input")
+                });
+                $("#cinderis2 input").on("change", function(){
+                progressbar("#cinderis2 input")
+                });
+                $("#cinderis3 input").on("change", function(){
+                progressbar("#cinderis3 input")
+                });
+                $("#cinderis4 input").on("change", function(){
+                progressbar("#cinderis4 input")
+                });
+                $("#cinderis5 input").on("change", function(){
+                progressbar("#cinderis5 input")
+                });
+                $("#cinderis6 input").on("change", function(){
+                progressbar("#cinderis6 input")
+                });
+                        
+                //cinder volume snapshot
+                $("#cindervs1 input").on("change", function(){
+                progressbar("#cindervs1 input")
+                });
+                $("#cindervs2 input").on("change", function(){
+                progressbar("#cindervs2 input")
+                });
+                $("#cindervs3 input").on("change", function(){
+                progressbar("#cindervs3 input")
+                });
+                $("#cindervs4 input").on("change", function(){
+                progressbar("#cindervs4 input")
+                });
+                $("#cindervs5 input").on("change", function(){
+                progressbar("#cindervs5 input")
+                });
+                $("#cindervs6 input").on("change", function(){
+                progressbar("#cindervs6 input")
+                });
+                $("#cindervs7 input").on("change", function(){
+                progressbar("#cindervs7 input")
+                });
+                $("#cindervs8 input").on("change", function(){
+                progressbar("#cindervs8 input")
+                });
+                $("#cindervs9 input").on("change", function(){
+                progressbar("#cindervs9 input")
+                });
+                $("#cindervs10 input").on("change", function(){
+                progressbar("#cindervs10 input")
+                });
+                $("#cindervs11 input").on("change", function(){
+                progressbar("#cindervs11 input")
+                });
+                $("#cindervs12 input").on("change", function(){
+                progressbar("#cindervs12 input")
+                });
+                $("#cindervs13 input").on("change", function(){
+                progressbar("#cindervs13 input")
+                });
+                        
+                //cinder volume backup
+                $("#cinderba1 input").on("change", function(){
+                progressbar("#cinderba1 input")
+                });
+                $("#cinderba2 input").on("change", function(){
+                progressbar("#cinderba2 input")
+                });
+                $("#cinderba3 input").on("change", function(){
+                progressbar("#cinderba3 input")
+                });
+                $("#cinderba4 input").on("change", function(){
+                progressbar("#cinderba4 input")
+                });
+                $("#cinderba5 input").on("change", function(){
+                progressbar("#cinderba5 input")
+                });
+                $("#cinderba6 input").on("change", function(){
+                progressbar("#cinderba6 input")
+                });
+                $("#cinderba7 input").on("change", function(){
+                progressbar("#cinderba7 input")
+                });
+                $("#cinderba8 input").on("change", function(){
+                progressbar("#cinderba8 input")
+                });
+                $("#cinderba9 input").on("change", function(){
+                progressbar("#cinderba9 input")
+                });
+                $("#cinderba10 input").on("change", function(){
+                progressbar("#cinderba10 input")
+                });
+                $("#cinderba11 input").on("change", function(){
+                progressbar("#cinderba11 input")
+                });
+                //cinder volume encryption
+                $("#cinderve1 input").on("change", function(){
+                progressbar("#cinderve1 input")
+                });
+                $("#cinderve2 input").on("change", function(){
+                progressbar("#cinderve2 input")
+                });
+                $("#cinderve3 input").on("change", function(){
+                progressbar("#cinderve3 input")
+                });
+                $("#cinderve4 input").on("change", function(){
+                progressbar("#cinderve4 input")
+                });
+                $("#cinderve5 input").on("change", function(){
+                progressbar("#cinderve5 input")
+                });        
+                //heat     
+                $("#heat1 input").on("change", function(){
+                progressbar("#heat1 input")
+                });
+                $("#heat2 input").on("change", function(){
+                progressbar("#heat2 input")
+                });        
+                     
+                //###############        
+                      });
     </script>
   </head><body>
     <div class="container">
@@ -238,137 +253,141 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="progress" id="progressbarid" data-spy="affix" data-offset-top="20">
-              <div class="progress-bar" role="progressbar" style="width: 0%;"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <a href="#">Completed tasks <span class="badge"> </span></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="section">
-      <div class="container">
-        <div class="row">Select the sections you want to make visible:</div>
-        <div class="row">
-          <div class="col-md-4">
-            <form>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" class="keystone" id="keystone-checkboxid">Keystone</label>
+            <div class="btn-link panel panel-warning" id="fixed-progress" data-spy="affix" data-offset-top="20">
+              <div class="panel-heading">
+                <h3 class="panel-title text-center">Progress</h3>
               </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" id="compute-checkboxid" class="compute">Compute</label>
-              </div>
-              <div class="checkbox ">
-                <label>
-                  <input type="checkbox" class="glance" id="glance-checkboxid">Glance</label>
-              </div>
-            </form>
-          </div>
-          <div class="col-md-4">
-            <form>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" class="cinder" id="cinder-checkboxid">Cinder</label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" class="swift" id="swift-checkboxid">Swift</label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" class="heat" id="heat-checkboxid">Heat</label>
-              </div>
-            </form>
-          </div>
-          <div class="col-md-4"></div>
-        </div>
-      </div>
-    </div>
-    <div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div id="myModal" class="modal fade">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Congratulations!</h4>
-                  </div>
-                  <div class="modal-body">
-                    <p>You have finished all exam tasks</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                  </div>
+              <div class="panel-body">
+                <div class="progress" id="progressbarid">
+                  <div class="progress-bar progress-bar-succes" role="progressbar" style="width: 0%;"></div>
+                </div>
+                <div class="col-md-12">
+                  <a href="#">Completed tasks <span class="badge"> </span></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="panel panel-primary" id="keystone-sectionid">
-              <div class="panel-heading">
-                <h3 class="panel-title">Identity</h3>
+      </div>
+      <div class="section">
+        <div class="container"></div>
+      </div>
+      <div class="section">
+        <div class="container">
+          <div class="row">Select the sections you want to make visible:</div>
+          <div class="row">
+            <div class="col-md-4">
+              <form>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" class="keystone" id="keystone-checkboxid">Keystone</label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" id="compute-checkboxid" class="compute">Compute</label>
+                </div>
+                <div class="checkbox ">
+                  <label>
+                    <input type="checkbox" class="glance" id="glance-checkboxid">Glance</label>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-4">
+              <form>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" class="cinder" id="cinder-checkboxid">Cinder</label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" class="swift" id="swift-checkboxid">Swift</label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" class="heat" id="heat-checkboxid">Heat</label>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                      <h4 class="modal-title">Congratulations!</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>You have finished all exam tasks</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="panel-body">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <div class="qcheckbox" id="identity1">
-                      <label>1.
-                        <input type="checkbox" value="">
-                      </label>
-                      <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel panel-info" id="keystone-sectionid">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Identity</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <div class="qcheckbox" id="identity1">
+                        <label>1.
+                          <input type="checkbox" value="">
+                        </label>
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
 
 
                         Having an old rc file and without downloading rc file from project &gt; Access and security &gt; API access &gt;, make sure to build rc file for both tenants admin &amp; demo
               </a>
-                      </h4>
+                        </h4>
+                      </div>
+                    </div>
+                    <div class="panel-collapse collapse in" id="collapse1">
+                      <div class="panel-body">Go to identity &gt; project, get project id from old admin-openrc.sh,
+                        replace tentant id with project admin id to build admin credential file
+                        and demo credential file and finally source it: source demorc.sh</div>
                     </div>
                   </div>
-                  <div class="panel-collapse collapse in" id="collapse1">
-                    <div class="panel-body">Go to identity &gt; project, get project id from old admin-openrc.sh,
-                      replace tentant id with project admin id to build admin credential file
-                      and demo credential file and finally source it: source demorc.sh</div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <div class="qcheckbox" id="identity2">
-                      <label>2.
-                        <input type="checkbox" value="">
-                      </label>
-                      <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <div class="qcheckbox" id="identity2">
+                        <label>2.
+                          <input type="checkbox" value="">
+                        </label>
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
 
 
                         Creating a project named "new-project1", a user "new-user1" with password "new-user1", and assign a new role role "manager" to that user.
 
               </a>
-                      </h4>
+                        </h4>
+                      </div>
                     </div>
-                  </div>
-                  <div id="collapse2" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>openstack project create "project1"
-                        <br>openstack project list
-                        <br>openstack user create "new-user1"
-                        <br>openstack user list
-                        <br>openstack role create "manager"
-                        <br>openstack role list</p>
+                    <div id="collapse2" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>openstack project create "project1"
+                          <br>openstack project list
+                          <br>openstack user create "new-user1"
+                          <br>openstack user list
+                          <br>openstack role create "manager"
+                          <br>openstack role list</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -377,48 +396,47 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="panel panel-primary" id="compute-sectionid">
-              <div class="panel-heading">
-                <h3 class="panel-title">Compute</h3>
-              </div>
-              <div class="panel-body">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <div class="qcheckbox" id="compute1">
-                      <label>1.
-                        <input type="checkbox" value="">
-                      </label>
-                      <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#compute1">
+      <div class="section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel panel-info" id="compute-sectionid">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Compute</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <div class="qcheckbox" id="compute1">
+                        <label>1.
+                          <input type="checkbox" value="">
+                        </label>
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#compute1">
 
 
                         From demo account, generate a public keypair named mypubkey1 for use with openstack instances
 
               </a>
-                      </h4>
+                        </h4>
+                      </div>
+                    </div>
+                    <div class="panel-collapse collapse" id="compute1">
+                      <div class="panel-body">
+                        <p>nova keypair-add key1 key1.pem
+                          <br>chmod 600 key1.pem
+                          <br>nova keypair-list</p>
+                      </div>
                     </div>
                   </div>
-                  <div class="panel-collapse collapse" id="compute1">
-                    <div class="panel-body">
-                      <p>nova keypair-add key1 key1.pem
-                        <br>chmod 600 key1.pem
-                        <br>nova keypair-list</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <div class="qcheckbox" id="compute2">
-                      <label>2.
-                        <input type="checkbox" value="">
-                      </label>
-                      <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#compute2">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <div class="qcheckbox" id="compute2">
+                        <label>2.
+                          <input type="checkbox" value="">
+                        </label>
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#compute2">
 <p>
 
                         
@@ -430,78 +448,78 @@ From admin account, create a new flavor named m1.extra_tiny with:</p>
 </ul>
 
               </a>
-                      </h4>
+                        </h4>
+                      </div>
+                    </div>
+                    <div id="compute2" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>. admin_rc.sh
+                          <br>nova flavor-lis
+                          <br>nova flavor-create m1.extra_tiny auto 64 0 1 --rxtx-factor 1.0</p>
+                      </div>
                     </div>
                   </div>
-                  <div id="compute2" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>. admin_rc.sh
-                        <br>nova flavor-lis
-                        <br>nova flavor-create m1.extra_tiny auto 64 0 1 --rxtx-factor 1.0</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <div class="qcheckbox" id="compute3">
-                      <label>3.
-                        <input type="checkbox" value="">
-                      </label>
-                      <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#compute3">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <div class="qcheckbox" id="compute3">
+                        <label>3.
+                          <input type="checkbox" value="">
+                        </label>
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#compute3">
 
 
 Allow the tenant (project) "demo" to access the flavor
 
               </a>
-                      </h4>
+                        </h4>
+                      </div>
+                    </div>
+                    <div id="compute3" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>openstack project list
+                          <br>nova flavor-access-add m1.extra_tiny</p>
+                        <p>
+                          <br>Additional commands:
+                          <br>nova flavor-list
+                          <br>nova flavor-delete {flavorid}</p>
+                      </div>
                     </div>
                   </div>
-                  <div id="compute3" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>openstack project list
-                        <br>nova flavor-access-add m1.extra_tiny</p>
-                      <p>
-                        <br>Additional commands:
-                        <br>nova flavor-list
-                        <br>nova flavor-delete {flavorid}</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <div class="qcheckbox" id="compute4">
-                      <label>4.
-                        <input type="checkbox" value="">
-                      </label>
-                      <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#compute4">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <div class="qcheckbox" id="compute4">
+                        <label>4.
+                          <input type="checkbox" value="">
+                        </label>
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#compute4">
 
 
 Add new rules to the default security group "default" to allow access instances from internet through SSH, http and ICMP.
 
               </a>
-                      </h4>
+                        </h4>
+                      </div>
+                    </div>
+                    <div id="compute4" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>nova secgroup-list
+                          <br>nova secgroup-list-rules default
+                          <br>nova secgroup-add-rule default tcp 22 22 0.0.0.0/0
+                          <br>nova secgroup-add-rule default tcp 80 80 0.0.0.0/0
+                          <br>nova secgroup-add-rule default icmp -1 -1 0.0.0.0/0</p>
+                      </div>
                     </div>
                   </div>
-                  <div id="compute4" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>nova secgroup-list
-                        <br>nova secgroup-list-rules default
-                        <br>nova secgroup-add-rule default tcp 22 22 0.0.0.0/0
-                        <br>nova secgroup-add-rule default tcp 80 80 0.0.0.0/0
-                        <br>nova secgroup-add-rule default icmp -1 -1 0.0.0.0/0</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <div class="qcheckbox" id="compute5">
-                      <label>5.
-                        <input type="checkbox" value="">
-                      </label>
-                      <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#compute5">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <div class="qcheckbox" id="compute5">
+                        <label>5.
+                          <input type="checkbox" value="">
+                        </label>
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#compute5">
 
                         
 
@@ -514,122 +532,122 @@ Provision the following instance:
 </ul>
 
               </a>
-                      </h4>
+                        </h4>
+                      </div>
+                    </div>
+                    <div id="compute5" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>nova boot instance2 --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key-name
+                          key1 --security-group default</p>
+                      </div>
                     </div>
                   </div>
-                  <div id="compute5" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>nova boot instance2 --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key-name
-                        key1 --security-group default</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <div class="qcheckbox" id="compute6">
-                      <label>6.
-                        <input type="checkbox" value="">
-                      </label>
-                      <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#compute6">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <div class="qcheckbox" id="compute6">
+                        <label>6.
+                          <input type="checkbox" value="">
+                        </label>
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#compute6">
 
 
 Log to the machine console using the keypair key1
 
               </a>
-                      </h4>
+                        </h4>
+                      </div>
+                    </div>
+                    <div id="compute6" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>Get the instance IP address from nova list command:
+                          <br>ssh -i key1.pem ubuntu@{ip}</p>
+                      </div>
                     </div>
                   </div>
-                  <div id="compute6" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>Get the instance IP address from nova list command:
-                        <br>ssh -i key1.pem ubuntu@{ip}</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <div class="qcheckbox" id="compute7">
-                      <label>7.
-                        <input type="checkbox" value="">
-                      </label>
-                      <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#compute7">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <div class="qcheckbox" id="compute7">
+                        <label>7.
+                          <input type="checkbox" value="">
+                        </label>
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#compute7">
 
 
 Create a snapshot named "instance2-snapshot" from the running image instance2
 
               </a>
-                      </h4>
+                        </h4>
+                      </div>
                     </div>
-                  </div>
-                  <div id="compute7" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>nova image-create {instance2} {instance2-snapshot}
-                        <br>nova delete {instance2}</p>
+                    <div id="compute7" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>nova image-create {instance2} {instance2-snapshot}
+                          <br>nova delete {instance2}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="panel panel-primary" id="glance-sectionid">
-              <div class="panel-heading">
-                <h3 class="panel-title">Glance</h3>
-              </div>
-              <div class="panel-body">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <div class="qcheckbox" id="glance1">
-                      <label>1.
-                        <input type="checkbox" value="">
-                      </label>
-                    </div>
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#glance1">
+              <div class="panel panel-info" id="glance-sectionid">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Glance</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <div class="qcheckbox" id="glance1">
+                        <label>1.
+                          <input type="checkbox" value="">
+                        </label>
+                      </div>
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#glance1">
 
 Retrieve Ubuntu cloud image file from the following link:
 
 </a>
-                      <p>
-                        <a data-toggle="collapse" data-parent="#accordion" href="#compute6"></a>
-                        <a href="https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img">https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img</a>
-                      </p>
-                    </h4>
-                  </div>
-                  <div id="glance1" class="panel-collapse collapse">
-                    <div class="panel-body">wget https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img</div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <div class="qcheckbox" id="glance2">
-                      <label>2.
-                        <input type="checkbox" value="">
-                      </label>
+                        <p>
+                          <a data-toggle="collapse" data-parent="#accordion" href="#compute6"></a>
+                          <a href="https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img">https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img</a>
+                        </p>
+                      </h4>
                     </div>
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#glance2">
+                    <div id="glance1" class="panel-collapse collapse">
+                      <div class="panel-body">wget https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img</div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <div class="qcheckbox" id="glance2">
+                        <label>2.
+                          <input type="checkbox" value="">
+                        </label>
+                      </div>
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#glance2">
 
 
 Create an image named "ubuntu-trusty" from the downoaded image file
 
               </a>
-                    </h4>
-                  </div>
-                  <div id="glance2" class="panel-collapse collapse">
-                    <div class="panel-body">glance image-create --progress --name ubuntu-trusty --file trusty-server-cloudimg-amd64-disk1.img
-                      --disk-format qcow2 --container-format bare</div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <div class="qcheckbox" id="glance3">
-                      <label>3.
-                        <input type="checkbox" value="">
-                      </label>
+                      </h4>
                     </div>
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#glance3">
+                    <div id="glance2" class="panel-collapse collapse">
+                      <div class="panel-body">glance image-create --progress --name ubuntu-trusty --file trusty-server-cloudimg-amd64-disk1.img
+                        --disk-format qcow2 --container-format bare</div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <div class="qcheckbox" id="glance3">
+                        <label>3.
+                          <input type="checkbox" value="">
+                        </label>
+                      </div>
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#glance3">
 
 
 Start an instance named "u1" from the following parameters:
@@ -641,35 +659,35 @@ Start an instance named "u1" from the following parameters:
                       </ul>                        
 
               </a>
-                    </h4>
-                  </div>
-                  <div id="glance3" class="panel-collapse collapse">
-                    <div class="panel-body">nova boot u2 --image ubuntu-trusty --flavor m1.small --key-name key1 --security-group
-                      default</div>
+                      </h4>
+                    </div>
+                    <div id="glance3" class="panel-collapse collapse">
+                      <div class="panel-body">nova boot u2 --image ubuntu-trusty --flavor m1.small --key-name key1 --security-group
+                        default</div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="panel panel-primary" id="cinder-sectionid">
-              <div class="panel-heading">
-                <h3 class="panel-title">Cinder</h3>
-              </div>
-              <div class="panel-body">
-                <div class="panel panel-primary">
-                  <div class="panel-heading">
-                    <h3 class="panel-title" contenteditable="true">Instance snapshots</h3>
-                  </div>
-                  <div class="panel-body">
-                    <p></p>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderis1">
-                          <label>1.
-                            <input type="checkbox" value="">
-                          </label>
-                        </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder11">
+              <div class="panel panel-info" id="cinder-sectionid">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Cinder</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title" contenteditable="true">Instance snapshots</h3>
+                    </div>
+                    <div class="panel-body">
+                      <p></p>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderis1">
+                            <label>1.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder11">
 
 
 Create an instance "instance1" from cirros-0.3.4-x86_64-uec image
@@ -680,77 +698,77 @@ Create an instance "instance1" from cirros-0.3.4-x86_64-uec image
 
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder11" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <p>Make sure, you have a key and the appropriate ICMP and SSH rules in place:</p>
-                          <p>nova keypair-add key1 &gt; key1.pem
-                            <br>chmod 600 key1.pem
-                            <br>nova keypair-list</p>
-                          <p>nova secgroup-list
-                            <br>nova secgroup-list-rules new_secgroup
-                            <br>nova secgroup-add-rule new_secgroup tcp 22 22 0.0.0.0/0
-                            <br>nova secgroup-add-rule new_secgroup icmp -1 -1 0.0.0.0/0
-                            <br>nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key_name
-                            key1 instance1</p>
+                          </h4>
+                        </div>
+                        <div id="cinder11" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <p>Make sure, you have a key and the appropriate ICMP and SSH rules in place:</p>
+                            <p>nova keypair-add key1 &gt; key1.pem
+                              <br>chmod 600 key1.pem
+                              <br>nova keypair-list</p>
+                            <p>nova secgroup-list
+                              <br>nova secgroup-list-rules new_secgroup
+                              <br>nova secgroup-add-rule new_secgroup tcp 22 22 0.0.0.0/0
+                              <br>nova secgroup-add-rule new_secgroup icmp -1 -1 0.0.0.0/0
+                              <br>nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key_name
+                              key1 instance1</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderis2">
-                          <label>2.
-                            <input type="checkbox" value="">
-                          </label>
-                        </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder12">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderis2">
+                            <label>2.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder12">
 
 
 nside the home directory of "instance2" create a file testfile.txt
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder12" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <p>ssh -i key1.pem cirros@{ip}
-                            <instance2-ip>
-                              <br>touch testfile.txt</instance2-ip>
-                          </p>
+                          </h4>
+                        </div>
+                        <div id="cinder12" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <p>ssh -i key1.pem cirros@{ip}
+                              <instance2-ip>
+                                <br>touch testfile.txt</instance2-ip>
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderis3">
-                          <label>3.
-                            <input type="checkbox" value="">
-                          </label>
-                        </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder13">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderis3">
+                            <label>3.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder13">
 
 
 Take a snapshot of instance "instance2", name it "snapshot-of-instance2"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder13" class="panel-collapse collapse">
-                        <div class="panel-body">nova image-create {snapshot-id} {snapshot-of-instance1}</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderis4">
-                          <label>4.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder14">
+                        <div id="cinder13" class="panel-collapse collapse">
+                          <div class="panel-body">nova image-create {snapshot-id} {snapshot-of-instance1}</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderis4">
+                            <label>4.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder14">
 
 
 Terminate the instance "instance2"
@@ -758,88 +776,88 @@ Terminate the instance "instance2"
 
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder14" class="panel-collapse collapse">
-                        <div class="panel-body">nova delete {instance1-id}</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderis5">
-                          <label>5.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder15">
+                        <div id="cinder14" class="panel-collapse collapse">
+                          <div class="panel-body">nova delete {instance1-id}</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderis5">
+                            <label>5.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder15">
 
 
 Create an instance from "snapshot-of-instance2" and name it "instance-from-snapshot"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder15" class="panel-collapse collapse">
-                        <div class="panel-body">nova boot --flavor m1.tiny --key key1 --security-groups new-secgroup --snapshot
-                          {snapshot} {instance2-from-instance1}</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderis6">
-                          <label>6.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
+                        <div id="cinder15" class="panel-collapse collapse">
+                          <div class="panel-body">nova boot --flavor m1.tiny --key key1 --security-groups new-secgroup --snapshot
+                            {snapshot} {instance2-from-instance1}</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderis6">
+                            <label>6.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
 
 Inside the home directory of "instance-from-snapshot" verify the presence of the file "testfile.txt"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder16" class="panel-collapse collapse">
-                        <div class="panel-body">--- answer ---</div>
-                      </div>
-                    </div>
-                    <p></p>
-                  </div>
-                </div>
-                <div class="btn-link panel panel-primary">
-                  <div class="panel-heading">
-                    <h3 class="panel-title" draggable="true">Volume snapshots</h3>
-                  </div>
-                  <div class="panel-body">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cindervs1">
-                          <label>1.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder21">
+                        <div id="cinder16" class="panel-collapse collapse">
+                          <div class="panel-body">--- answer ---</div>
+                        </div>
+                      </div>
+                      <p></p>
+                    </div>
+                  </div>
+                  <div class="btn-link panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title" draggable="true">Volume snapshots</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cindervs1">
+                            <label>1.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder21">
 
 Create a new empty volume "vol1" of a 1GB size
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder21" class="panel-collapse collapse">
-                        <div class="panel-body">cinder create --display-name {demo-volume1} {1}</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cindervs2">
-                          <label>2.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder22">
+                        <div id="cinder21" class="panel-collapse collapse">
+                          <div class="panel-body">cinder create --display-name {demo-volume1} {1}</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cindervs2">
+                            <label>2.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder22">
 
 Create an instance "instance1" from cirros-0.3.4-x86_64-uec image
 <ul>
@@ -850,289 +868,289 @@ Create an instance "instance1" from cirros-0.3.4-x86_64-uec image
 </ul>
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder22" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <p>Make sure, you have a key and the appropriate ICMP and SSH rules in place:
-                            <br>nova keypair-add key1 &amp;gt; key1.pem
-                            <br>chmod 600 key1.pem
-                            <br>nova keypair-list</p>
-                          <p>nova secgroup-list
-                            <br>nova secgroup-list-rules new_secgroup
-                            <br>nova secgroup-add-rule new_secgroup tcp 22 22 0.0.0.0/0
-                            <br>nova secgroup-add-rule new_secgroup icmp -1 -1 0.0.0.0/0</p>
-                          <p>nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key_name
-                            key1 --security-groups new-secgroup instance1</p>
+                          </h4>
+                        </div>
+                        <div id="cinder22" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <p>Make sure, you have a key and the appropriate ICMP and SSH rules in place:
+                              <br>nova keypair-add key1 &amp;gt; key1.pem
+                              <br>chmod 600 key1.pem
+                              <br>nova keypair-list</p>
+                            <p>nova secgroup-list
+                              <br>nova secgroup-list-rules new_secgroup
+                              <br>nova secgroup-add-rule new_secgroup tcp 22 22 0.0.0.0/0
+                              <br>nova secgroup-add-rule new_secgroup icmp -1 -1 0.0.0.0/0</p>
+                            <p>nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key_name
+                              key1 --security-groups new-secgroup instance1</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cindervs3">
-                          <label>3.
-                            <input type="checkbox" value="">
-                          </label>
-                        </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder23">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cindervs3">
+                            <label>3.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder23">
 
 Attach the created image "vol1" to the instance "instance1" and mount it to /mnt/vdb
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder23" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <p>nova volume-attach &lt;instance-id&gt; &lt;vol-id&gt; /dev/vdb`
-                            <br>ssh -i key1.pem cirros@10.0.0.3
-                            <br>sudo fdisk /dev/vdb
-                            <br>sudo mount /dev/vdb /mnt</p>
+                          </h4>
+                        </div>
+                        <div id="cinder23" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <p>nova volume-attach &lt;instance-id&gt; &lt;vol-id&gt; /dev/vdb`
+                              <br>ssh -i key1.pem cirros@10.0.0.3
+                              <br>sudo fdisk /dev/vdb
+                              <br>sudo mount /dev/vdb /mnt</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cindervs4">
-                          <label>4.
-                            <input type="checkbox" value="">
-                          </label>
-                        </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder24">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cindervs4">
+                            <label>4.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder24">
 
 inside the attached volume (/mnt/vdb) create a file testfile.txt
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder24" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <p>touch /mnt/vdb/testfile.txt
-                            <br>sync &amp;&amp; sleep 2</p>
+                          </h4>
+                        </div>
+                        <div id="cinder24" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <p>touch /mnt/vdb/testfile.txt
+                              <br>sync &amp;&amp; sleep 2</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cindervs5">
-                          <label>5.
-                            <input type="checkbox" value="">
-                          </label>
-                        </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder25">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cindervs5">
+                            <label>5.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder25">
 
 On the blockstorage node /dev/stack-volumes/volume-*
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder25" class="panel-collapse collapse">
-                        <div class="panel-body">strings /dev/stack-volumes/volume-* | grep "testfile.txt"</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cindervs6">
-                          <label>6.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder26">
+                        <div id="cinder25" class="panel-collapse collapse">
+                          <div class="panel-body">strings /dev/stack-volumes/volume-* | grep "testfile.txt"</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cindervs6">
+                            <label>6.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder26">
 
 Detach the volume "vol1" from the instance "instance1"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder23" class="panel-collapse collapse">
-                        <div class="panel-body">nova volume-detach
-                          <instance-id>
-                            <vol-id>/dev/vdb</vol-id>
-                          </instance-id>
+                          </h4>
+                        </div>
+                        <div id="cinder23" class="panel-collapse collapse">
+                          <div class="panel-body">nova volume-detach
+                            <instance-id>
+                              <vol-id>/dev/vdb</vol-id>
+                            </instance-id>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cindervs7">
-                          <label>7.
-                            <input type="checkbox" value="">
-                          </label>
-                        </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder27">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cindervs7">
+                            <label>7.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder27">
 
 Take a snapshot of "vol1", name it "snapshot-of-vol1"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder27" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <p>cinder snapshot-create --name {snapshot-name} {vol-id}
-                            <br>cinder list
-                            <br>cinder snapshot-list</p>
+                          </h4>
+                        </div>
+                        <div id="cinder27" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <p>cinder snapshot-create --name {snapshot-name} {vol-id}
+                              <br>cinder list
+                              <br>cinder snapshot-list</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cindervs8">
-                          <label>8.
-                            <input type="checkbox" value="">
-                          </label>
-                        </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder28">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cindervs8">
+                            <label>8.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder28">
 
 Create a volume from the snapshot
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder28" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <p>cinder create --snapshot-id {snapshot-id} --name {new-vol}
-                            <br>cinder list</p>
+                          </h4>
+                        </div>
+                        <div id="cinder28" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <p>cinder create --snapshot-id {snapshot-id} --name {new-vol}
+                              <br>cinder list</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cindervs9">
-                          <label>9.
-                            <input type="checkbox" value="">
-                          </label>
-                        </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder29">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cindervs9">
+                            <label>9.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder29">
 
 Reattach the first volume "vol1" to the instance "instance1"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder29" class="panel-collapse collapse">
-                        <div class="panel-body">nova volume-attach {instance-id} {vol-id}</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cindervs10">
-                          <label>10.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
+                        <div id="cinder29" class="panel-collapse collapse">
+                          <div class="panel-body">nova volume-attach {instance-id} {vol-id}</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cindervs10">
+                            <label>10.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
 
 Delete the previously created file "testfile.txt"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder30" class="panel-collapse collapse">
-                        <div class="panel-body">--- answer ---</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cindervs11">
-                          <label>11.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder31">
+                        <div id="cinder30" class="panel-collapse collapse">
+                          <div class="panel-body">--- answer ---</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cindervs11">
+                            <label>11.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder31">
 
 detach the colume "vol1" from the instance "instance1"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder31" class="panel-collapse collapse">
-                        <div class="panel-body">nova volume-detach {instance-id} {vol-id} /dev/vdb</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cindervs12">
-                          <label>12.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinder32">
+                        <div id="cinder31" class="panel-collapse collapse">
+                          <div class="panel-body">nova volume-detach {instance-id} {vol-id} /dev/vdb</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cindervs12">
+                            <label>12.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinder32">
 
 Attach the created volume "new-vol" to the instance "instance1"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder32" class="panel-collapse collapse">
-                        <div class="panel-body">nova volume-attach {instance-id} {vol-id}</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cindervs13">
-                          <label>13.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
+                        <div id="cinder32" class="panel-collapse collapse">
+                          <div class="panel-body">nova volume-attach {instance-id} {vol-id}</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cindervs13">
+                            <label>13.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
 
 Inside the attached volume verify the presence of the file "testfile.txt"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinder33" class="panel-collapse collapse">
-                        <div class="panel-body">--- answer ---</div>
+                          </h4>
+                        </div>
+                        <div id="cinder33" class="panel-collapse collapse">
+                          <div class="panel-body">--- answer ---</div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="panel panel-primary">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Volume backup</h3>
-                  </div>
-                  <div class="panel-body">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderba1">
-                          <label>1.
-                            <input type="checkbox" value="">
-                          </label>
-                        </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb1">
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Volume backup</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderba1">
+                            <label>1.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinderb1">
 
 Create a new empty volume "vol2" of a 1GB size
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinderb1" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <p>cinder create --display-name {demo-volume1} {1}
-                            <br>cinder list</p>
+                          </h4>
+                        </div>
+                        <div id="cinderb1" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <p>cinder create --display-name {demo-volume1} {1}
+                              <br>cinder list</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderba2">
-                          <label>2.
-                            <input type="checkbox" value="">
-                          </label>
-                        </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb2">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderba2">
+                            <label>2.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinderb2">
 
 Create an instance "instance3"
 <li>image: cirros-0.3.4-x86_64-uec</li>
@@ -1143,335 +1161,335 @@ Create an instance "instance3"
 <p>&nbsp;</p>
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinderb2" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <p>nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key_name
-                            key1 instance3
-                            <br>nova list --security-groups default</p>
+                          </h4>
+                        </div>
+                        <div id="cinderb2" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <p>nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key_name
+                              key1 instance3
+                              <br>nova list --security-groups default</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderba3">
-                          <label>3.
-                            <input type="checkbox" value="">
-                          </label>
-                        </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb3">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderba3">
+                            <label>3.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinderb3">
 
 Attach the volume "vol2" it to the instance "instance3"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinderb3" class="panel-collapse collapse">
-                        <div class="panel-body">nova volume-attach {253619cf-127c-46a1-a2aa-a273cedf6a85} {d-847c-fde00ea96649}
-                          /dev/vdb</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderba4">
-                          <label>4.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
+                        <div id="cinderb3" class="panel-collapse collapse">
+                          <div class="panel-body">nova volume-attach {253619cf-127c-46a1-a2aa-a273cedf6a85} {d-847c-fde00ea96649}
+                            /dev/vdb</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderba4">
+                            <label>4.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
 
 Inside the home directory of the mounted partition inside "instance3" create a file testfile.txt
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="-" class="panel-collapse collapse">
-                        <div class="panel-body">--- answer ---</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderba5">
-                          <label>5.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb5">
+                        <div id="-" class="panel-collapse collapse">
+                          <div class="panel-body">--- answer ---</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderba5">
+                            <label>5.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinderb5">
 
 Detach the volume from the running instance
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinderb5" class="panel-collapse collapse">
-                        <div class="panel-body">nova volume-detach {253619cf-127c-46a1-a2aa-a273cedf6a85} {2429b44b- cc42-4ebd-847c-fde00ea96649}</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderba6">
-                          <label>6.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb6">
+                        <div id="cinderb5" class="panel-collapse collapse">
+                          <div class="panel-body">nova volume-detach {253619cf-127c-46a1-a2aa-a273cedf6a85} {2429b44b- cc42-4ebd-847c-fde00ea96649}</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderba6">
+                            <label>6.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinderb6">
 
 Backup the volume "vol2" into a volume "vol2-backup"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinderb6" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <p>cinder backup-show
-                            <br>cinder backup-list
-                            <br>cinder backup-create {vol-id}</p>
+                          </h4>
+                        </div>
+                        <div id="cinderb6" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <p>cinder backup-show
+                              <br>cinder backup-list
+                              <br>cinder backup-create {vol-id}</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderba7">
-                          <label>7.
-                            <input type="checkbox" value="">
-                          </label>
-                        </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb7">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderba7">
+                            <label>7.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinderb7">
 
 Remove the original volume "vol2"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinderb7" class="panel-collapse collapse">
-                        <div class="panel-body">cinder delete {vol-id}</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderba8">
-                          <label>8.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb8">
+                        <div id="cinderb7" class="panel-collapse collapse">
+                          <div class="panel-body">cinder delete {vol-id}</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderba8">
+                            <label>8.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinderb8">
 
 Restore the backed up volume "vol2-backup"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinderb8" class="panel-collapse collapse">
-                        <div class="panel-body">cinder backup-restore {vol-id}</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderba9">
-                          <label>9.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb9">
+                        <div id="cinderb8" class="panel-collapse collapse">
+                          <div class="panel-body">cinder backup-restore {vol-id}</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderba9">
+                            <label>9.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinderb9">
 
  Delete the backup volume "vol2-backup"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinderb9" class="panel-collapse collapse">
-                        <div class="panel-body">cinder backup-delete {backup-vol-id}</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderba10">
-                          <label>10.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderb10">
+                        <div id="cinderb9" class="panel-collapse collapse">
+                          <div class="panel-body">cinder backup-delete {backup-vol-id}</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderba10">
+                            <label>10.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinderb10">
 
 Attach it to the running instance "instance3"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinderb10" class="panel-collapse collapse">
-                        <div class="panel-body">nova volume-detach {253619cf-127c-46a1-a2aa-a273cedf6a85 2429b44b} {cc42-4ebd-847c-fde00ea96649}
-                          /dev/vdb</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderba11">
-                          <label>11.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
+                        <div id="cinderb10" class="panel-collapse collapse">
+                          <div class="panel-body">nova volume-detach {253619cf-127c-46a1-a2aa-a273cedf6a85 2429b44b} {cc42-4ebd-847c-fde00ea96649}
+                            /dev/vdb</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderba11">
+                            <label>11.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#nothing">
 
 iInside the mounted partition, make sure the file "testfile.txt" exists
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="-" class="panel-collapse collapse">
-                        <div class="panel-body">--- answer ---</div>
+                          </h4>
+                        </div>
+                        <div id="-" class="panel-collapse collapse">
+                          <div class="panel-body">--- answer ---</div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="panel panel-primary">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Volume encryption</h3>
-                  </div>
-                  <div class="panel-body">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderve1">
-                          <label>1.
-                            <input type="checkbox" value="">
-                          </label>
-                        </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderve1">
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Volume encryption</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderve1">
+                            <label>1.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinderve1">
 
 Create the encrypted volume "encrypted-vol" (LUKS volume) of 1GB size
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinderve1" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <br>cinder create --display-name 'encrypted volume' --volume-type LUKS 1
-                          <br>cinder list</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderve2">
-                          <label>2.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderve2">
+                        <div id="cinderve1" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <br>cinder create --display-name 'encrypted volume' --volume-type LUKS 1
+                            <br>cinder list</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderve2">
+                            <label>2.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinderve2">
 
 Create an instance "instance4"
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinderve2" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <br>chmod 600 key1.pem
-                          <br>nova keypair-add key1 &gt; key1.pem
-                          <br>nova keypair-list
-                          <br>
-                          <br>Security rule
-                          <br>nova secgroup-create new_secgroup "comments"
-                          <br>nova secgroup-add-rule new_secgroup tcp 22 22 0.0.0.0/0
-                          <br>nova secgroup-add-rule new_secgroup icmp -1 -1 0.0.0.0/0
-                          <br>
-                          <br>nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key_name
-                          key1 --security-group new_secgroup instance4
-                          <br>
-                          <br>nova list
-                          <br>ssh -i {ssh-key.pem} cirros@X.X.X.X</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderve3">
-                          <label>3.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderve3">
+                        <div id="cinderve2" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <br>chmod 600 key1.pem
+                            <br>nova keypair-add key1 &gt; key1.pem
+                            <br>nova keypair-list
+                            <br>
+                            <br>Security rule
+                            <br>nova secgroup-create new_secgroup "comments"
+                            <br>nova secgroup-add-rule new_secgroup tcp 22 22 0.0.0.0/0
+                            <br>nova secgroup-add-rule new_secgroup icmp -1 -1 0.0.0.0/0
+                            <br>
+                            <br>nova boot --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key_name
+                            key1 --security-group new_secgroup instance4
+                            <br>
+                            <br>nova list
+                            <br>ssh -i {ssh-key.pem} cirros@X.X.X.X</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderve3">
+                            <label>3.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinderve3">
 
 Attach the encrypted volume to the machine
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinderve3" class="panel-collapse collapse">
-                        <div class="panel-body">nova volume-attach {253619cf-127c-46a1-a2aa-a273cedf6a85} {2429b44b-cc42-4ebd-847c-fde00ea96649}
-                          /dev/vdb</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderve4">
-                          <label>4.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderve4">
+                        <div id="cinderve3" class="panel-collapse collapse">
+                          <div class="panel-body">nova volume-attach {253619cf-127c-46a1-a2aa-a273cedf6a85} {2429b44b-cc42-4ebd-847c-fde00ea96649}
+                            /dev/vdb</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderve4">
+                            <label>4.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinderve4">
 
 Create a file "testfile.txt" and syncronize the operations
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinderve4" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <br>touch /mnt/vdb/testfile.txt
-                          <br>sync &amp;&amp; sleep 2</div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <div class="qcheckbox" id="cinderve5">
-                          <label>5.
-                            <input type="checkbox" value="">
-                          </label>
+                          </h4>
                         </div>
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#cinderve5">
+                        <div id="cinderve4" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <br>touch /mnt/vdb/testfile.txt
+                            <br>sync &amp;&amp; sleep 2</div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="cinderve5">
+                            <label>5.
+                              <input type="checkbox" value="">
+                            </label>
+                          </div>
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#cinderve5">
 
 Test encrypted volume
 
               </a>
-                        </h4>
-                      </div>
-                      <div id="cinderve5" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <br>On the block storage node directory {/dev/stack-volumes/volume-}
-                          <br>strings {/dev/stack-volumes/volume-*} | grep {"testfile.txt"}
-                          <br>Because the volume is encrypted, you shouldn't be able to see the file.</div>
+                          </h4>
+                        </div>
+                        <div id="cinderve5" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <br>On the block storage node directory {/dev/stack-volumes/volume-}
+                            <br>strings {/dev/stack-volumes/volume-*} | grep {"testfile.txt"}
+                            <br>Because the volume is encrypted, you shouldn't be able to see the file.</div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="panel panel-primary" id="heat-sectionid">
-              <div class="panel-heading">
-                <h3 class="panel-title">Heat Orchestration</h3>
-              </div>
-              <div class="panel-body">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <div class="qcheckbox" id="heat1">
-                      <label>1.
-                        <input type="checkbox" value="">
-                      </label>
-                    </div>
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#heat1">
+              <div class="panel panel-info" id="heat-sectionid">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Heat Orchestration</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <div class="qcheckbox" id="heat1">
+                        <label>1.
+                          <input type="checkbox" value="">
+                        </label>
+                      </div>
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#heat1">
 
 <p>Define a HOT template "basic1.yml" with only the following parameters</p>
 <ul>
@@ -1479,33 +1497,34 @@ Test encrypted volume
 <li>image: cirros-0.3.4-x86_64-uec&nbsp;</li>
 </ul>
 </a>
-                      <p>
-                        <a data-toggle="collapse" data-parent="#accordion" href="#heat1"></a>
-                        <a href="https://github.com/AJNOURI/COA/blob/master/heat-stuff/basic-stack1.md">https://github.com/AJNOURI/COA/blob/master/heat-stuff/basic-stack1.md</a>
-                      </p>
-                    </h4>
-                  </div>
-                  <div id="-" class="panel-collapse collapse">
-                    <div class="panel-body">--- answer ---</div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <div class="qcheckbox" id="heat2">
-                      <label>2.
-                        <input type="checkbox" value="">
-                      </label>
+                        <p>
+                          <a data-toggle="collapse" data-parent="#accordion" href="#heat1"></a>
+                          <a href="https://github.com/AJNOURI/COA/blob/master/heat-stuff/basic-stack1.md">https://github.com/AJNOURI/COA/blob/master/heat-stuff/basic-stack1.md</a>
+                        </p>
+                      </h4>
                     </div>
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#heat2">
+                    <div id="-" class="panel-collapse collapse">
+                      <div class="panel-body">--- answer ---</div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <div class="qcheckbox" id="heat2">
+                        <label>2.
+                          <input type="checkbox" value="">
+                        </label>
+                      </div>
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#heat2">
 
 Start the stack defined in the HOT template "basic.yml"
 
               </a>
-                    </h4>
-                  </div>
-                  <div id="heat2" class="panel-collapse collapse">
-                    <div class="panel-body">heat stack-create -f basic1.yml hot-instance1</div>
+                      </h4>
+                    </div>
+                    <div id="heat2" class="panel-collapse collapse">
+                      <div class="panel-body">heat stack-create -f basic1.yml hot-instance1</div>
+                    </div>
                   </div>
                 </div>
               </div>
