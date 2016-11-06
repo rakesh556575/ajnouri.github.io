@@ -45,7 +45,13 @@ $('.play').on('click', function(e) {
   e.preventDefault();
   isPaused = false;
 });
-        
+$('.reset').on('click', function(e) {
+  e.preventDefault();
+  //isPaused = true;
+  time=800;  
+  //isPaused = true;
+
+});        
         //###############
         
         
@@ -300,6 +306,7 @@ $('.play').on('click', function(e) {
                     <div class="col-md-6">
                       <button class="play">Play</button>
                       <button class="pause">Pause</button>
+                      <button class="reset">Reset</button>
                       <h1>Time left in Seconds: 0</h1>
                     </div>
                   </div>
