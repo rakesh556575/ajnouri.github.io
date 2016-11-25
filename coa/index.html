@@ -6,126 +6,137 @@
     <script type="text/javascript" src="SpinBox.js"></script>
     <style>
       /* width: 90%;*/
-                      .affix {
-                          top: 1;
-                          width: 90%;
-                          z-index: 1;
-                      }
-                    
-                      .affix + .container-fluid {
-                          padding-top: 70px;
-                      }
-                    #fixed-progress {
-                    background-color: #F7D358;
-                	}
-              h1 {
-            font-family: Helvetica, Verdana, sans-serif;
-            font-size: 12px;
-        }
-//####### spinbox styles
-@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
-
-.spinner input {
-  text-align: right;
-}
-
-.input-group-btn-vertical {
-  position: relative;
-  white-space: nowrap;
-  width: 2%;
-  vertical-align: middle;
-  display: table-cell;
-}
-
-.input-group-btn-vertical > .btn {
-  display: block;
-  float: none;
-  width: 100%;
-  max-width: 100%;
-  padding: 8px;
-  margin-left: -1px;
-  position: relative;
-  border-radius: 0;
-}
-
-.input-group-btn-vertical > .btn:first-child {
-  border-top-right-radius: 4px;
-}
-
-.input-group-btn-vertical > .btn:last-child {
-  margin-top: -2px;
-  border-bottom-right-radius: 4px;
-}
-
-.input-group-btn-vertical i {
-  position: absolute;
-  top: 0;
-  left: 4px;
-}      
-//####### spinbox styles
+      
+      .affix {
+        top: 1;
+        width: 90%;
+        z-index: 1;
+      }
+      
+      .affix + .container-fluid {
+        padding-top: 70px;
+      }
+      
+      #fixed-progress {
+        background-color: #F7D358;
+      }
+      
+      h1 {
+        font-family: Helvetica, Verdana, sans-serif;
+        font-size: 12px;
+      }
+      
+      //####### spinbox styles
+      @import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+      .spinner input {
+        text-align: right;
+      }
+      
+      .input-group-btn-vertical {
+        position: relative;
+        white-space: nowrap;
+        width: 2%;
+        vertical-align: middle;
+        display: table-cell;
+      }
+      
+      .input-group-btn-vertical > .btn {
+        display: block;
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        padding: 8px;
+        margin-left: -1px;
+        position: relative;
+        border-radius: 0;
+      }
+      
+      .input-group-btn-vertical > .btn:first-child {
+        border-top-right-radius: 4px;
+      }
+      
+      .input-group-btn-vertical > .btn:last-child {
+        margin-top: -2px;
+        border-bottom-right-radius: 4px;
+      }
+      
+      .input-group-btn-vertical i {
+        position: absolute;
+        top: 0;
+        left: 4px;
+      }
+      
+      //####### spinbox styles
     </style>
     <script>
-      $(document).ready(function(){
-		//############## spinboxes fucntions
-        
-$(function(){
+      $(document).ready(function() {
+        //############## spinboxes fucntions
 
-    $('.spinner .btn:first-of-type').on('click', function() {
-      var btn = $(this);
-      var input = btn.closest('.spinner').find('input');
-      if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {    
-        input.val(parseInt(input.val(), 10) + 1);
-      } else {
-        btn.next("disabled", true);
-      }
-    });
-    $('.spinner .btn:last-of-type').on('click', function() {
-      var btn = $(this);
-      var input = btn.closest('.spinner').find('input');
-      if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {    
-        input.val(parseInt(input.val(), 10) - 1);
-      } else {
-        btn.prev("disabled", true);
-      }
-    });
 
-})
-		//############## spinboxes fucntions
-        
-        
-        //############### timer
-        
         var output = $('h1');
         var isPaused = false;
-        var defaulttime = 0;
+        var defaulttime = 5;
         var time = defaulttime;
         var hours = 0;
         var minutes = 0;
-        var seconds = 0;        
+        var seconds = 0;
+        var progress = 0;
+        var qnumber = $(".qcheckbox").length;
+        var qweight = 100 / qnumber;
+        var checked = 0;
+        var tasks = 0;
+
+      
+        
+        $(function() {
+
+            $('.spinner .btn:first-of-type').on('click', function() {
+              var btn = $(this);
+              var input = btn.closest('.spinner').find('input');
+              if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {
+                input.val(parseInt(input.val(), 10) + 1);
+              } else {
+                btn.next("disabled", true);
+              }
+            });
+            $('.spinner .btn:last-of-type').on('click', function() {
+              var btn = $(this);
+              var input = btn.closest('.spinner').find('input');
+              if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {
+                input.val(parseInt(input.val(), 10) - 1);
+              } else {
+                btn.prev("disabled", true);
+              }
+            });
+
+          })
+          //############## spinboxes fucntions
+
+
+        $('.badge').text(tasks + " / " + qnumber);
         var t = window.setInterval(function() {
-          if(!isPaused) {
+          if (!isPaused) {
             time--;
-             if (time == 0) {
-               $("#TimesUpModel").modal('show');
-          	   time=defaulttime;
-               isPaused = true;
-             }
-            
-else {
-            hours = Math.floor(time / 3600);
-            minutes = Math.floor((time - (hours * 3600)) / 60);
-            seconds = time - (hours * 3600) - (minutes * 60);
-            output.text("Time left: " + hours + " : " + minutes + " : " + seconds);
-}
+            if (time == 0) {
+              $("#TimesUpModel").modal('show');
+              time = defaulttime;
+              //isPaused = true;
+              alert("")
+            } else {
+              hours = Math.floor(time / 3600);
+              minutes = Math.floor((time - (hours * 3600)) / 60);
+              seconds = time - (hours * 3600) - (minutes * 60);
+              output.text("Time left: " + hours + " : " + minutes + " : " + seconds);
+            }
           }
         }, 1000);
-        
+
         // timer with jquery
         $('.pause').on('click', function(e) {
           e.preventDefault();
           isPaused = true;
         });
-        
+
         $('.play').on('click', function(e) {
           e.preventDefault();
           isPaused = false;
@@ -133,237 +144,234 @@ else {
         $('.reset').on('click', function(e) {
           e.preventDefault();
           //isPaused = true;
-          time=defaulttime;  
-          //isPaused = true;
-        
-        }); 
-      
-                //###############
+          time = defaulttime;
+          //alert($('#hourv input').val());
+          alert($("#hourv").attr('value'));
 
-                
-                                    var progress = 0;
-                                    var qnumber = $(".qcheckbox").length;
-                                    var qweight = 100 / qnumber;
-                                    var checked = 0;
-                                    var tasks = 0;
-                                    
-                                    //var qweight = qweightf.toFixed(3)
-                                    /* window.alert(qweight);
-                                    window.alert($(".qcheckbox").length); */
-                                    function finished(questions) {
-                                    if (questions > 100) {
-                                            $("#EndModal").modal('show');
-                        				}
-                                    }
-                                      
-                        
-                                          // By default hide all sections
-                                          $("#keystone-sectionid").hide();
-                                          $("#compute-sectionid").hide();
-                                          $("#glance-sectionid").hide();
-                                          $("#cinder-sectionid").hide();
-                                          $("#swift-sectionid").hide();
-                                          $("#heat-sectionid").hide();
-                                
-                                		  // toggle section visibility               
-                                          $("#keystone-checkboxid").click(function(){
-                                              $("#keystone-sectionid").toggle();
-                                          });
-                                          $("#compute-checkboxid").click(function(){
-                                              $("#compute-sectionid").toggle();
-                                          });
-                                          $("#glance-checkboxid").click(function(){
-                                              $("#glance-sectionid").toggle();
-                                          });
-                                          $("#cinder-checkboxid").click(function(){
-                                              $("#cinder-sectionid").toggle();
-                                          });
-                                          $("#heat-checkboxid").click(function(){
-                                              $("#heat-sectionid").toggle();
-                                          });
-                                
-                                //######################################
-                                    function progressbar(id) {
-                                        if ($(id).is(":checked") == true) {
-                                        //  alert('1');
-                                        progress = progress+qweight;
-                                        tasks = tasks + 1;
-                                        $('.badge').text(tasks + " / " + qnumber);
-                                        $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
-                                        finished(progress);
-                                        }
-                                        else if ($(id).is(":checked") == false) {
-                                        //  alert('2');
-                                        progress = progress-qweight;
-                                        tasks = tasks - 1;
-                                        $('.badge').text(tasks + " / " + qnumber);
-                                        //checked = checked - 1
-                                        $('#progressbarid > .progress-bar').attr("style","width:" + progress + "%");
-                                        }      
-                                    }
-                                //######################################
-                                //identity
-                                    $("#identity1 input").on('change', function(){
-                                      //alert($(this).attr('id'));
-                                      progressbar("#identity1 input")
-                                    });
-                                    $("#identity2 input").on('change', function(){
-                                      progressbar("#identity2 input")
-                                    });
-                                     
-                                //compute
-                                $("#compute1 input").on("change", function(){
-                                progressbar("#compute1 input")
-                                });
-                                $("#compute2 input").on("change", function(){
-                                progressbar("#compute2 input")
-                                });
-                                $("#compute3 input").on("change", function(){
-                                progressbar("#compute3 input")
-                                });
-                                $("#compute4 input").on("change", function(){
-                                progressbar("#compute4 input")
-                                });
-                                $("#compute5 input").on("change", function(){
-                                progressbar("#compute5 input")
-                                });
-                                $("#compute6 input").on("change", function(){
-                                progressbar("#compute6 input")
-                                });
-                                $("#compute7 input").on("change", function(){
-                                progressbar("#compute7 input")
-                                });
-                                //glance
-                                    $("#glance1 input").on('change', function(){
-                                      progressbar("#glance1 input")
-                                    });
-                                    $("#glance2 input").on('change', function(){
-                                      progressbar("#glance2 input")
-                                    });
-                                    $("#glance3 input").on('change', function(){
-                                      progressbar("#glance3 input")
-                                    });
-                                //cinder instance snapshot
-                                $("#cinderis1 input").on("change", function(){
-                                progressbar("#cinderis1 input")
-                                });
-                                $("#cinderis2 input").on("change", function(){
-                                progressbar("#cinderis2 input")
-                                });
-                                $("#cinderis3 input").on("change", function(){
-                                progressbar("#cinderis3 input")
-                                });
-                                $("#cinderis4 input").on("change", function(){
-                                progressbar("#cinderis4 input")
-                                });
-                                $("#cinderis5 input").on("change", function(){
-                                progressbar("#cinderis5 input")
-                                });
-                                $("#cinderis6 input").on("change", function(){
-                                progressbar("#cinderis6 input")
-                                });
-                                        
-                                //cinder volume snapshot
-                                $("#cindervs1 input").on("change", function(){
-                                progressbar("#cindervs1 input")
-                                });
-                                $("#cindervs2 input").on("change", function(){
-                                progressbar("#cindervs2 input")
-                                });
-                                $("#cindervs3 input").on("change", function(){
-                                progressbar("#cindervs3 input")
-                                });
-                                $("#cindervs4 input").on("change", function(){
-                                progressbar("#cindervs4 input")
-                                });
-                                $("#cindervs5 input").on("change", function(){
-                                progressbar("#cindervs5 input")
-                                });
-                                $("#cindervs6 input").on("change", function(){
-                                progressbar("#cindervs6 input")
-                                });
-                                $("#cindervs7 input").on("change", function(){
-                                progressbar("#cindervs7 input")
-                                });
-                                $("#cindervs8 input").on("change", function(){
-                                progressbar("#cindervs8 input")
-                                });
-                                $("#cindervs9 input").on("change", function(){
-                                progressbar("#cindervs9 input")
-                                });
-                                $("#cindervs10 input").on("change", function(){
-                                progressbar("#cindervs10 input")
-                                });
-                                $("#cindervs11 input").on("change", function(){
-                                progressbar("#cindervs11 input")
-                                });
-                                $("#cindervs12 input").on("change", function(){
-                                progressbar("#cindervs12 input")
-                                });
-                                $("#cindervs13 input").on("change", function(){
-                                progressbar("#cindervs13 input")
-                                });
-                                        
-                                //cinder volume backup
-                                $("#cinderba1 input").on("change", function(){
-                                progressbar("#cinderba1 input")
-                                });
-                                $("#cinderba2 input").on("change", function(){
-                                progressbar("#cinderba2 input")
-                                });
-                                $("#cinderba3 input").on("change", function(){
-                                progressbar("#cinderba3 input")
-                                });
-                                $("#cinderba4 input").on("change", function(){
-                                progressbar("#cinderba4 input")
-                                });
-                                $("#cinderba5 input").on("change", function(){
-                                progressbar("#cinderba5 input")
-                                });
-                                $("#cinderba6 input").on("change", function(){
-                                progressbar("#cinderba6 input")
-                                });
-                                $("#cinderba7 input").on("change", function(){
-                                progressbar("#cinderba7 input")
-                                });
-                                $("#cinderba8 input").on("change", function(){
-                                progressbar("#cinderba8 input")
-                                });
-                                $("#cinderba9 input").on("change", function(){
-                                progressbar("#cinderba9 input")
-                                });
-                                $("#cinderba10 input").on("change", function(){
-                                progressbar("#cinderba10 input")
-                                });
-                                $("#cinderba11 input").on("change", function(){
-                                progressbar("#cinderba11 input")
-                                });
-                                //cinder volume encryption
-                                $("#cinderve1 input").on("change", function(){
-                                progressbar("#cinderve1 input")
-                                });
-                                $("#cinderve2 input").on("change", function(){
-                                progressbar("#cinderve2 input")
-                                });
-                                $("#cinderve3 input").on("change", function(){
-                                progressbar("#cinderve3 input")
-                                });
-                                $("#cinderve4 input").on("change", function(){
-                                progressbar("#cinderve4 input")
-                                });
-                                $("#cinderve5 input").on("change", function(){
-                                progressbar("#cinderve5 input")
-                                });        
-                                //heat     
-                                $("#heat1 input").on("change", function(){
-                                progressbar("#heat1 input")
-                                });
-                                $("#heat2 input").on("change", function(){
-                                progressbar("#heat2 input")
-                                });        
-                                     
-                                //###############        
-                                      });
+
+        });
+
+        //###############
+
+
+
+
+        //var qweight = qweightf.toFixed(3)
+        /* window.alert(qweight);
+        window.alert($(".qcheckbox").length); */
+        function finished(questions) {
+          if (questions > 100) {
+            $("#EndModal").modal('show');
+          }
+        }
+
+
+        // By default hide all sections
+        $("#keystone-sectionid").hide();
+        $("#compute-sectionid").hide();
+        $("#glance-sectionid").hide();
+        $("#cinder-sectionid").hide();
+        $("#swift-sectionid").hide();
+        $("#heat-sectionid").hide();
+
+        // toggle section visibility               
+        $("#keystone-checkboxid").click(function() {
+          $("#keystone-sectionid").toggle();
+        });
+        $("#compute-checkboxid").click(function() {
+          $("#compute-sectionid").toggle();
+        });
+        $("#glance-checkboxid").click(function() {
+          $("#glance-sectionid").toggle();
+        });
+        $("#cinder-checkboxid").click(function() {
+          $("#cinder-sectionid").toggle();
+        });
+        $("#heat-checkboxid").click(function() {
+          $("#heat-sectionid").toggle();
+        });
+
+        //######################################
+        function progressbar(id) {
+          if ($(id).is(":checked") == true) {
+            //  alert('1');
+            progress = progress + qweight;
+            tasks = tasks + 1;
+            $('.badge').text(tasks + " / " + qnumber);
+            $('#progressbarid > .progress-bar').attr("style", "width:" + progress + "%");
+            finished(progress);
+          } else if ($(id).is(":checked") == false) {
+            //  alert('2');
+            progress = progress - qweight;
+            tasks = tasks - 1;
+            $('.badge').text(tasks + " / " + qnumber);
+            //checked = checked - 1
+            $('#progressbarid > .progress-bar').attr("style", "width:" + progress + "%");
+          }
+        }
+        //######################################
+        //identity
+        $("#identity1 input").on('change', function() {
+          //alert($(this).attr('id'));
+          progressbar("#identity1 input")
+        });
+        $("#identity2 input").on('change', function() {
+          progressbar("#identity2 input")
+        });
+
+        //compute
+        $("#compute1 input").on("change", function() {
+          progressbar("#compute1 input")
+        });
+        $("#compute2 input").on("change", function() {
+          progressbar("#compute2 input")
+        });
+        $("#compute3 input").on("change", function() {
+          progressbar("#compute3 input")
+        });
+        $("#compute4 input").on("change", function() {
+          progressbar("#compute4 input")
+        });
+        $("#compute5 input").on("change", function() {
+          progressbar("#compute5 input")
+        });
+        $("#compute6 input").on("change", function() {
+          progressbar("#compute6 input")
+        });
+        $("#compute7 input").on("change", function() {
+          progressbar("#compute7 input")
+        });
+        //glance
+        $("#glance1 input").on('change', function() {
+          progressbar("#glance1 input")
+        });
+        $("#glance2 input").on('change', function() {
+          progressbar("#glance2 input")
+        });
+        $("#glance3 input").on('change', function() {
+          progressbar("#glance3 input")
+        });
+        //cinder instance snapshot
+        $("#cinderis1 input").on("change", function() {
+          progressbar("#cinderis1 input")
+        });
+        $("#cinderis2 input").on("change", function() {
+          progressbar("#cinderis2 input")
+        });
+        $("#cinderis3 input").on("change", function() {
+          progressbar("#cinderis3 input")
+        });
+        $("#cinderis4 input").on("change", function() {
+          progressbar("#cinderis4 input")
+        });
+        $("#cinderis5 input").on("change", function() {
+          progressbar("#cinderis5 input")
+        });
+        $("#cinderis6 input").on("change", function() {
+          progressbar("#cinderis6 input")
+        });
+
+        //cinder volume snapshot
+        $("#cindervs1 input").on("change", function() {
+          progressbar("#cindervs1 input")
+        });
+        $("#cindervs2 input").on("change", function() {
+          progressbar("#cindervs2 input")
+        });
+        $("#cindervs3 input").on("change", function() {
+          progressbar("#cindervs3 input")
+        });
+        $("#cindervs4 input").on("change", function() {
+          progressbar("#cindervs4 input")
+        });
+        $("#cindervs5 input").on("change", function() {
+          progressbar("#cindervs5 input")
+        });
+        $("#cindervs6 input").on("change", function() {
+          progressbar("#cindervs6 input")
+        });
+        $("#cindervs7 input").on("change", function() {
+          progressbar("#cindervs7 input")
+        });
+        $("#cindervs8 input").on("change", function() {
+          progressbar("#cindervs8 input")
+        });
+        $("#cindervs9 input").on("change", function() {
+          progressbar("#cindervs9 input")
+        });
+        $("#cindervs10 input").on("change", function() {
+          progressbar("#cindervs10 input")
+        });
+        $("#cindervs11 input").on("change", function() {
+          progressbar("#cindervs11 input")
+        });
+        $("#cindervs12 input").on("change", function() {
+          progressbar("#cindervs12 input")
+        });
+        $("#cindervs13 input").on("change", function() {
+          progressbar("#cindervs13 input")
+        });
+
+        //cinder volume backup
+        $("#cinderba1 input").on("change", function() {
+          progressbar("#cinderba1 input")
+        });
+        $("#cinderba2 input").on("change", function() {
+          progressbar("#cinderba2 input")
+        });
+        $("#cinderba3 input").on("change", function() {
+          progressbar("#cinderba3 input")
+        });
+        $("#cinderba4 input").on("change", function() {
+          progressbar("#cinderba4 input")
+        });
+        $("#cinderba5 input").on("change", function() {
+          progressbar("#cinderba5 input")
+        });
+        $("#cinderba6 input").on("change", function() {
+          progressbar("#cinderba6 input")
+        });
+        $("#cinderba7 input").on("change", function() {
+          progressbar("#cinderba7 input")
+        });
+        $("#cinderba8 input").on("change", function() {
+          progressbar("#cinderba8 input")
+        });
+        $("#cinderba9 input").on("change", function() {
+          progressbar("#cinderba9 input")
+        });
+        $("#cinderba10 input").on("change", function() {
+          progressbar("#cinderba10 input")
+        });
+        $("#cinderba11 input").on("change", function() {
+          progressbar("#cinderba11 input")
+        });
+        //cinder volume encryption
+        $("#cinderve1 input").on("change", function() {
+          progressbar("#cinderve1 input")
+        });
+        $("#cinderve2 input").on("change", function() {
+          progressbar("#cinderve2 input")
+        });
+        $("#cinderve3 input").on("change", function() {
+          progressbar("#cinderve3 input")
+        });
+        $("#cinderve4 input").on("change", function() {
+          progressbar("#cinderve4 input")
+        });
+        $("#cinderve5 input").on("change", function() {
+          progressbar("#cinderve5 input")
+        });
+        //heat     
+        $("#heat1 input").on("change", function() {
+          progressbar("#heat1 input")
+        });
+        $("#heat2 input").on("change", function() {
+          progressbar("#heat2 input")
+        });
+
+        //###############        
+      });
     </script>
   </head><body>
     <div class="container">
@@ -394,7 +402,7 @@ else {
                     <div class="col-md-3">
                       <div class="container">
                         <div class="col-md-2 text-center">
-                          <div class="input-group spinner">
+                          <div class="input-group spinner" id="hourv">
                             <input type="text" class="form-control" value="2" min="0" max="5">
                             <div class="input-group-btn-vertical">
                               <button class="btn btn-default" type="button">
