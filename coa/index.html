@@ -3,375 +3,386 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://instantcm.com/js/v2/latest/txt-min.js"></script>
+    <script>
+      var options = {
+        id: "487a2105-db8c-4c2c-a631-c357898ce7f6"
+      };
+      Txt.render(options);
+    </script>
     <script type="text/javascript" src="SpinBox.js"></script>
     <style>
       /* width: 90%;*/
-      
-      .affix {
-        top: 1;
-        width: 90%;
-        z-index: 1;
-      }
-      
-      .affix + .container-fluid {
-        padding-top: 70px;
-      }
-      
-      #fixed-progress {
-        background-color: #F7D358;
-      }
-      
-      h1 {
-        font-family: Helvetica, Verdana, sans-serif;
-        font-size: 12px;
-      }
-      
-      //####### spinbox styles
-      @import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
-      .spinner input {
-        text-align: right;
-      }
-      
-      .input-group-btn-vertical {
-        position: relative;
-        white-space: nowrap;
-        width: 2%;
-        vertical-align: middle;
-        display: table-cell;
-      }
-      
-      .input-group-btn-vertical > .btn {
-        display: block;
-        float: none;
-        width: 100%;
-        max-width: 100%;
-        padding: 8px;
-        margin-left: -1px;
-        position: relative;
-        border-radius: 0;
-      }
-      
-      .input-group-btn-vertical > .btn:first-child {
-        border-top-right-radius: 4px;
-      }
-      
-      .input-group-btn-vertical > .btn:last-child {
-        margin-top: -2px;
-        border-bottom-right-radius: 4px;
-      }
-      
-      .input-group-btn-vertical i {
-        position: absolute;
-        top: 0;
-        left: 4px;
-      }
-      
-      //####### spinbox styles
+              
+              .affix {
+                top: 1;
+                width: 90%;
+                z-index: 1;
+              }
+              
+              .affix + .container-fluid {
+                padding-top: 70px;
+              }
+              
+              #fixed-progress {
+                background-color: #F7D358;
+              }
+              
+              tleft {
+                font-family: Helvetica, Verdana, sans-serif;
+                font-size: 12px;
+                vertical-align: middle;
+              }
+              
+              //####### spinbox styles
+              @import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+              .spinner input {
+                text-align: right;
+              }
+              
+              .input-group-btn-vertical {
+                position: relative;
+                white-space: nowrap;
+                width: 2%;
+                vertical-align: middle;
+                display: table-cell;
+              }
+              
+              .input-group-btn-vertical > .btn {
+                display: block;
+                float: none;
+                width: 100%;
+                max-width: 100%;
+                padding: 8px;
+                margin-left: -1px;
+                position: relative;
+                border-radius: 0;
+              }
+              
+              .input-group-btn-vertical > .btn:first-child {
+                border-top-right-radius: 4px;
+              }
+              
+              .input-group-btn-vertical > .btn:last-child {
+                margin-top: -2px;
+                border-bottom-right-radius: 4px;
+              }
+              
+              .input-group-btn-vertical i {
+                position: absolute;
+                top: 0;
+                left: 4px;
+              }
+              
+              //####### spinbox styles
     </style>
     <script>
       $(document).ready(function() {
-        //############## spinboxes fucntions
-
-
-        var output = $('h1');
-        var isPaused = false;
-        var defaulttime = 5;
-        var time = defaulttime;
-        var hours = 0;
-        var minutes = 0;
-        var seconds = 0;
-        var progress = 0;
-        var qnumber = $(".qcheckbox").length;
-        var qweight = 100 / qnumber;
-        var checked = 0;
-        var tasks = 0;
-
-      
+                //############## spinboxes fucntions
         
-        $(function() {
-
-            $('.spinner .btn:first-of-type').on('click', function() {
-              var btn = $(this);
-              var input = btn.closest('.spinner').find('input');
-              if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {
-                input.val(parseInt(input.val(), 10) + 1);
-              } else {
-                btn.next("disabled", true);
-              }
-            });
-            $('.spinner .btn:last-of-type').on('click', function() {
-              var btn = $(this);
-              var input = btn.closest('.spinner').find('input');
-              if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {
-                input.val(parseInt(input.val(), 10) - 1);
-              } else {
-                btn.prev("disabled", true);
-              }
-            });
-
-          })
-          //############## spinboxes fucntions
-
-
-        $('.badge').text(tasks + " / " + qnumber);
-        var t = window.setInterval(function() {
-          if (!isPaused) {
-            time--;
-            if (time == 0) {
-              $("#TimesUpModel").modal('show');
-              time = defaulttime;
-              //isPaused = true;
-              alert("")
-            } else {
-              hours = Math.floor(time / 3600);
-              minutes = Math.floor((time - (hours * 3600)) / 60);
-              seconds = time - (hours * 3600) - (minutes * 60);
-              output.text("Time left: " + hours + " : " + minutes + " : " + seconds);
-            }
-          }
-        }, 1000);
-
-        // timer with jquery
-        $('.pause').on('click', function(e) {
-          e.preventDefault();
-          isPaused = true;
-        });
-
-        $('.play').on('click', function(e) {
-          e.preventDefault();
-          isPaused = false;
-        });
-        $('.reset').on('click', function(e) {
-          e.preventDefault();
-          //isPaused = true;
-          time = defaulttime;
-          //alert($('#hourv input').val());
-          alert($("#hourv").attr('value'));
-
-
-        });
-
-        //###############
-
-
-
-
-        //var qweight = qweightf.toFixed(3)
-        /* window.alert(qweight);
-        window.alert($(".qcheckbox").length); */
-        function finished(questions) {
-          if (questions > 100) {
-            $("#EndModal").modal('show');
-          }
-        }
-
-
-        // By default hide all sections
-        $("#keystone-sectionid").hide();
-        $("#compute-sectionid").hide();
-        $("#glance-sectionid").hide();
-        $("#cinder-sectionid").hide();
-        $("#swift-sectionid").hide();
-        $("#heat-sectionid").hide();
-
-        // toggle section visibility               
-        $("#keystone-checkboxid").click(function() {
-          $("#keystone-sectionid").toggle();
-        });
-        $("#compute-checkboxid").click(function() {
-          $("#compute-sectionid").toggle();
-        });
-        $("#glance-checkboxid").click(function() {
-          $("#glance-sectionid").toggle();
-        });
-        $("#cinder-checkboxid").click(function() {
-          $("#cinder-sectionid").toggle();
-        });
-        $("#heat-checkboxid").click(function() {
-          $("#heat-sectionid").toggle();
-        });
-
-        //######################################
-        function progressbar(id) {
-          if ($(id).is(":checked") == true) {
-            //  alert('1');
-            progress = progress + qweight;
-            tasks = tasks + 1;
-            $('.badge').text(tasks + " / " + qnumber);
-            $('#progressbarid > .progress-bar').attr("style", "width:" + progress + "%");
-            finished(progress);
-          } else if ($(id).is(":checked") == false) {
-            //  alert('2');
-            progress = progress - qweight;
-            tasks = tasks - 1;
-            $('.badge').text(tasks + " / " + qnumber);
-            //checked = checked - 1
-            $('#progressbarid > .progress-bar').attr("style", "width:" + progress + "%");
-          }
-        }
-        //######################################
-        //identity
-        $("#identity1 input").on('change', function() {
-          //alert($(this).attr('id'));
-          progressbar("#identity1 input")
-        });
-        $("#identity2 input").on('change', function() {
-          progressbar("#identity2 input")
-        });
-
-        //compute
-        $("#compute1 input").on("change", function() {
-          progressbar("#compute1 input")
-        });
-        $("#compute2 input").on("change", function() {
-          progressbar("#compute2 input")
-        });
-        $("#compute3 input").on("change", function() {
-          progressbar("#compute3 input")
-        });
-        $("#compute4 input").on("change", function() {
-          progressbar("#compute4 input")
-        });
-        $("#compute5 input").on("change", function() {
-          progressbar("#compute5 input")
-        });
-        $("#compute6 input").on("change", function() {
-          progressbar("#compute6 input")
-        });
-        $("#compute7 input").on("change", function() {
-          progressbar("#compute7 input")
-        });
-        //glance
-        $("#glance1 input").on('change', function() {
-          progressbar("#glance1 input")
-        });
-        $("#glance2 input").on('change', function() {
-          progressbar("#glance2 input")
-        });
-        $("#glance3 input").on('change', function() {
-          progressbar("#glance3 input")
-        });
-        //cinder instance snapshot
-        $("#cinderis1 input").on("change", function() {
-          progressbar("#cinderis1 input")
-        });
-        $("#cinderis2 input").on("change", function() {
-          progressbar("#cinderis2 input")
-        });
-        $("#cinderis3 input").on("change", function() {
-          progressbar("#cinderis3 input")
-        });
-        $("#cinderis4 input").on("change", function() {
-          progressbar("#cinderis4 input")
-        });
-        $("#cinderis5 input").on("change", function() {
-          progressbar("#cinderis5 input")
-        });
-        $("#cinderis6 input").on("change", function() {
-          progressbar("#cinderis6 input")
-        });
-
-        //cinder volume snapshot
-        $("#cindervs1 input").on("change", function() {
-          progressbar("#cindervs1 input")
-        });
-        $("#cindervs2 input").on("change", function() {
-          progressbar("#cindervs2 input")
-        });
-        $("#cindervs3 input").on("change", function() {
-          progressbar("#cindervs3 input")
-        });
-        $("#cindervs4 input").on("change", function() {
-          progressbar("#cindervs4 input")
-        });
-        $("#cindervs5 input").on("change", function() {
-          progressbar("#cindervs5 input")
-        });
-        $("#cindervs6 input").on("change", function() {
-          progressbar("#cindervs6 input")
-        });
-        $("#cindervs7 input").on("change", function() {
-          progressbar("#cindervs7 input")
-        });
-        $("#cindervs8 input").on("change", function() {
-          progressbar("#cindervs8 input")
-        });
-        $("#cindervs9 input").on("change", function() {
-          progressbar("#cindervs9 input")
-        });
-        $("#cindervs10 input").on("change", function() {
-          progressbar("#cindervs10 input")
-        });
-        $("#cindervs11 input").on("change", function() {
-          progressbar("#cindervs11 input")
-        });
-        $("#cindervs12 input").on("change", function() {
-          progressbar("#cindervs12 input")
-        });
-        $("#cindervs13 input").on("change", function() {
-          progressbar("#cindervs13 input")
-        });
-
-        //cinder volume backup
-        $("#cinderba1 input").on("change", function() {
-          progressbar("#cinderba1 input")
-        });
-        $("#cinderba2 input").on("change", function() {
-          progressbar("#cinderba2 input")
-        });
-        $("#cinderba3 input").on("change", function() {
-          progressbar("#cinderba3 input")
-        });
-        $("#cinderba4 input").on("change", function() {
-          progressbar("#cinderba4 input")
-        });
-        $("#cinderba5 input").on("change", function() {
-          progressbar("#cinderba5 input")
-        });
-        $("#cinderba6 input").on("change", function() {
-          progressbar("#cinderba6 input")
-        });
-        $("#cinderba7 input").on("change", function() {
-          progressbar("#cinderba7 input")
-        });
-        $("#cinderba8 input").on("change", function() {
-          progressbar("#cinderba8 input")
-        });
-        $("#cinderba9 input").on("change", function() {
-          progressbar("#cinderba9 input")
-        });
-        $("#cinderba10 input").on("change", function() {
-          progressbar("#cinderba10 input")
-        });
-        $("#cinderba11 input").on("change", function() {
-          progressbar("#cinderba11 input")
-        });
-        //cinder volume encryption
-        $("#cinderve1 input").on("change", function() {
-          progressbar("#cinderve1 input")
-        });
-        $("#cinderve2 input").on("change", function() {
-          progressbar("#cinderve2 input")
-        });
-        $("#cinderve3 input").on("change", function() {
-          progressbar("#cinderve3 input")
-        });
-        $("#cinderve4 input").on("change", function() {
-          progressbar("#cinderve4 input")
-        });
-        $("#cinderve5 input").on("change", function() {
-          progressbar("#cinderve5 input")
-        });
-        //heat     
-        $("#heat1 input").on("change", function() {
-          progressbar("#heat1 input")
-        });
-        $("#heat2 input").on("change", function() {
-          progressbar("#heat2 input")
-        });
-
-        //###############        
-      });
+        
+                var output = $('h1');
+                var isPaused = true;
+                var defaulttime = 900;
+                var time = defaulttime;
+                var hours = 0;
+                var minutes = 0;
+                var seconds = 0;
+                var progress = 0;
+                var qnumber = $(".qcheckbox").length;
+                var qweight = 100 / qnumber;
+                var checked = 0;
+                var tasks = 0;
+        
+        
+        $(function(){
+                            $("#footer").load("footer.html"); 
+                      });      
+                
+                $(function() {
+        
+                    $('.spinner .btn:first-of-type').on('click', function() {
+                      var btn = $(this);
+                      var input = btn.closest('.spinner').find('input');
+                      if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {
+                        input.val(parseInt(input.val(), 10) + 1);
+                      } else {
+                        btn.next("disabled", true);
+                      }
+                    });
+                    $('.spinner .btn:last-of-type').on('click', function() {
+                      var btn = $(this);
+                      var input = btn.closest('.spinner').find('input');
+                      if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {
+                        input.val(parseInt(input.val(), 10) - 1);
+                      } else {
+                        btn.prev("disabled", true);
+                      }
+                    });
+        
+                  })
+                  //############## spinboxes fucntions
+        
+        
+                $('.badge').text(tasks + " / " + qnumber);
+                var t = window.setInterval(function() {
+                  if (!isPaused) {
+                    time--;
+                    if (time == 0) {
+                      $("#TimesUpModel").modal('show');
+                      time = defaulttime;
+                      //isPaused = true;
+                      alert("")
+                    } else {
+                      hours = Math.floor(time / 3600);
+                      minutes = Math.floor((time - (hours * 3600)) / 60);
+                      seconds = time - (hours * 3600) - (minutes * 60);
+                      output.text("Time left: " + hours + " : " + minutes + " : " + seconds);
+                    }
+                  }
+                }, 1000);
+        
+                // timer with jquery
+                $('.pause').on('click', function(e) {
+                  e.preventDefault();
+                  isPaused = true;
+                });
+        
+                $('.play').on('click', function(e) {
+                  e.preventDefault();
+                  isPaused = false;
+                });
+                $('.reset').on('click', function(e) {
+                  e.preventDefault();
+                  //isPaused = true;
+                  time = defaulttime;
+                  //alert($('#hourv input').val());
+                  alert($("#hourv").attr('value'));
+        
+        
+                });
+        
+                //###############
+        
+        
+        
+        
+                //var qweight = qweightf.toFixed(3)
+                /* window.alert(qweight);
+                window.alert($(".qcheckbox").length); */
+                function finished(questions) {
+                  if (questions > 100) {
+                    $("#EndModal").modal('show');
+                  }
+                }
+        
+        
+                // By default hide all sections
+                $("#keystone-sectionid").hide();
+                $("#compute-sectionid").hide();
+                $("#glance-sectionid").hide();
+                $("#cinder-sectionid").hide();
+                $("#swift-sectionid").hide();
+                $("#heat-sectionid").hide();
+        
+                // toggle section visibility               
+                $("#keystone-checkboxid").click(function() {
+                  $("#keystone-sectionid").toggle();
+                });
+                $("#compute-checkboxid").click(function() {
+                  $("#compute-sectionid").toggle();
+                });
+                $("#glance-checkboxid").click(function() {
+                  $("#glance-sectionid").toggle();
+                });
+                $("#cinder-checkboxid").click(function() {
+                  $("#cinder-sectionid").toggle();
+                });
+                $("#heat-checkboxid").click(function() {
+                  $("#heat-sectionid").toggle();
+                });
+        
+                //######################################
+                function progressbar(id) {
+                  if ($(id).is(":checked") == true) {
+                    //  alert('1');
+                    progress = progress + qweight;
+                    tasks = tasks + 1;
+                    $('.badge').text(tasks + " / " + qnumber);
+                    $('#progressbarid > .progress-bar').attr("style", "width:" + progress + "%");
+                    finished(progress);
+                  } else if ($(id).is(":checked") == false) {
+                    //  alert('2');
+                    progress = progress - qweight;
+                    tasks = tasks - 1;
+                    $('.badge').text(tasks + " / " + qnumber);
+                    //checked = checked - 1
+                    $('#progressbarid > .progress-bar').attr("style", "width:" + progress + "%");
+                  }
+                }
+                //######################################
+                //identity
+                $("#identity1 input").on('change', function() {
+                  //alert($(this).attr('id'));
+                  progressbar("#identity1 input")
+                });
+                $("#identity2 input").on('change', function() {
+                  progressbar("#identity2 input")
+                });
+        
+                //compute
+                $("#compute1 input").on("change", function() {
+                  progressbar("#compute1 input")
+                });
+                $("#compute2 input").on("change", function() {
+                  progressbar("#compute2 input")
+                });
+                $("#compute3 input").on("change", function() {
+                  progressbar("#compute3 input")
+                });
+                $("#compute4 input").on("change", function() {
+                  progressbar("#compute4 input")
+                });
+                $("#compute5 input").on("change", function() {
+                  progressbar("#compute5 input")
+                });
+                $("#compute6 input").on("change", function() {
+                  progressbar("#compute6 input")
+                });
+                $("#compute7 input").on("change", function() {
+                  progressbar("#compute7 input")
+                });
+                //glance
+                $("#glance1 input").on('change', function() {
+                  progressbar("#glance1 input")
+                });
+                $("#glance2 input").on('change', function() {
+                  progressbar("#glance2 input")
+                });
+                $("#glance3 input").on('change', function() {
+                  progressbar("#glance3 input")
+                });
+                //cinder instance snapshot
+                $("#cinderis1 input").on("change", function() {
+                  progressbar("#cinderis1 input")
+                });
+                $("#cinderis2 input").on("change", function() {
+                  progressbar("#cinderis2 input")
+                });
+                $("#cinderis3 input").on("change", function() {
+                  progressbar("#cinderis3 input")
+                });
+                $("#cinderis4 input").on("change", function() {
+                  progressbar("#cinderis4 input")
+                });
+                $("#cinderis5 input").on("change", function() {
+                  progressbar("#cinderis5 input")
+                });
+                $("#cinderis6 input").on("change", function() {
+                  progressbar("#cinderis6 input")
+                });
+        
+                //cinder volume snapshot
+                $("#cindervs1 input").on("change", function() {
+                  progressbar("#cindervs1 input")
+                });
+                $("#cindervs2 input").on("change", function() {
+                  progressbar("#cindervs2 input")
+                });
+                $("#cindervs3 input").on("change", function() {
+                  progressbar("#cindervs3 input")
+                });
+                $("#cindervs4 input").on("change", function() {
+                  progressbar("#cindervs4 input")
+                });
+                $("#cindervs5 input").on("change", function() {
+                  progressbar("#cindervs5 input")
+                });
+                $("#cindervs6 input").on("change", function() {
+                  progressbar("#cindervs6 input")
+                });
+                $("#cindervs7 input").on("change", function() {
+                  progressbar("#cindervs7 input")
+                });
+                $("#cindervs8 input").on("change", function() {
+                  progressbar("#cindervs8 input")
+                });
+                $("#cindervs9 input").on("change", function() {
+                  progressbar("#cindervs9 input")
+                });
+                $("#cindervs10 input").on("change", function() {
+                  progressbar("#cindervs10 input")
+                });
+                $("#cindervs11 input").on("change", function() {
+                  progressbar("#cindervs11 input")
+                });
+                $("#cindervs12 input").on("change", function() {
+                  progressbar("#cindervs12 input")
+                });
+                $("#cindervs13 input").on("change", function() {
+                  progressbar("#cindervs13 input")
+                });
+        
+                //cinder volume backup
+                $("#cinderba1 input").on("change", function() {
+                  progressbar("#cinderba1 input")
+                });
+                $("#cinderba2 input").on("change", function() {
+                  progressbar("#cinderba2 input")
+                });
+                $("#cinderba3 input").on("change", function() {
+                  progressbar("#cinderba3 input")
+                });
+                $("#cinderba4 input").on("change", function() {
+                  progressbar("#cinderba4 input")
+                });
+                $("#cinderba5 input").on("change", function() {
+                  progressbar("#cinderba5 input")
+                });
+                $("#cinderba6 input").on("change", function() {
+                  progressbar("#cinderba6 input")
+                });
+                $("#cinderba7 input").on("change", function() {
+                  progressbar("#cinderba7 input")
+                });
+                $("#cinderba8 input").on("change", function() {
+                  progressbar("#cinderba8 input")
+                });
+                $("#cinderba9 input").on("change", function() {
+                  progressbar("#cinderba9 input")
+                });
+                $("#cinderba10 input").on("change", function() {
+                  progressbar("#cinderba10 input")
+                });
+                $("#cinderba11 input").on("change", function() {
+                  progressbar("#cinderba11 input")
+                });
+                //cinder volume encryption
+                $("#cinderve1 input").on("change", function() {
+                  progressbar("#cinderve1 input")
+                });
+                $("#cinderve2 input").on("change", function() {
+                  progressbar("#cinderve2 input")
+                });
+                $("#cinderve3 input").on("change", function() {
+                  progressbar("#cinderve3 input")
+                });
+                $("#cinderve4 input").on("change", function() {
+                  progressbar("#cinderve4 input")
+                });
+                $("#cinderve5 input").on("change", function() {
+                  progressbar("#cinderve5 input")
+                });
+                //heat     
+                $("#heat1 input").on("change", function() {
+                  progressbar("#heat1 input")
+                });
+                $("#heat2 input").on("change", function() {
+                  progressbar("#heat2 input")
+                });
+        
+                //###############        
+              });
     </script>
   </head><body>
     <div class="container">
@@ -392,14 +403,14 @@
                 </div>
                 <div class="section">
                   <div class="container">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                       <div class="col-md-12 text-center">
                         <a href="#">Completed tasks <span class="badge"> </span></a>
                       </div>
-                      <h1 class="text-center">Time left: 0</h1>
+                      <tleft class="text-center">Time left: 0</tleft>
                       <div></div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div class="container">
                         <div class="col-md-2 text-center">
                           <div class="input-group spinner" id="hourv">
@@ -429,7 +440,6 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-3"></div>
                     <div class="col-md-3 text-center">
                       <button class="play">Play</button>
                       <button class="pause">Pause</button>
@@ -561,23 +571,97 @@
                               <input type="checkbox" value="">
                             </label>
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-
-
-                        Creating a project named "new-project1", a user "new-user1" with password "new-user1", and assign a new role role "manager" to that user.
-
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapseidentity2">
+                        Create a domain named "domain1"
               </a>
                             </h4>
                           </div>
                         </div>
-                        <div id="collapse2" class="panel-collapse collapse">
+                        <div id="collapseidentity2" class="panel-collapse collapse">
                           <div class="panel-body">
-                            <p>openstack project create "project1"
-                              <br>openstack project list
-                              <br>openstack user create "new-user1"
-                              <br>openstack user list
-                              <br>openstack role create "manager"
-                              <br>openstack role list</p>
+                            <p>openstack domain create domain1 --description "domain 1"</p>
+                            <p>openstack domain list</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="compute3">
+                            <label>3.
+                              <input type="checkbox" value="">
+                            </label>
+                            <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapsecompute3">
+Create a project named "domain1_project1" within the domain "domain1"
+            </a>
+                            </h4>
+                          </div>
+                        </div>
+                        <div id="collapsecompute3" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <p>openstack project create domain1_project1 --domain domain1</p>
+                            <p>openstack project list</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="compute4">
+                            <label>4.
+                              <input type="checkbox" value="">
+                            </label>
+                            <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapsecompute4">
+Create a user "domain1_admin" in the domain "domain1"
+            </a>
+                            </h4>
+                          </div>
+                        </div>
+                        <div id="collapsecompute4" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <p>openstack user create domain1_admin --email "admin@domain1.com" --domain
+                              domain1 --password-prompt</p>
+                            <p>openstack user list --domain domain1</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="compute5">
+                            <label>5.
+                              <input type="checkbox" value="">
+                            </label>
+                            <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapsecompute5">
+				Assign domain scope "admin" role to user "domain1_admin"
+            </a>
+                            </h4>
+                          </div>
+                        </div>
+                        <div id="collapsecompute5" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <p>openstack role add --user domain1_admin --domain domain1 admin</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <div class="qcheckbox" id="compute6">
+                            <label>6.
+                              <input type="checkbox" value="">
+                            </label>
+                            <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapsecompute6">
+				Create a regular user within the domain "domain1"
+            </a>
+                            </h4>
+                          </div>
+                        </div>
+                        <div id="collapsecompute6" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <p>openstack user create domain1_user1 --email "user1@domain1.com" --domain
+                              domain1 --password-prompt</p>
+                            <p>openstack user list --domain domain1</p>
                           </div>
                         </div>
                       </div>
@@ -603,16 +687,13 @@
                               <input type="checkbox" value="">
                             </label>
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#compute1">
-
-
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapsecompute1">
                         From demo account, generate a public keypair named mypubkey1 for use with openstack instances
-
               </a>
                             </h4>
                           </div>
                         </div>
-                        <div class="panel-collapse collapse" id="compute1">
+                        <div class="panel-collapse collapse" id="collapsecompute1">
                           <div class="panel-body">
                             <p>nova keypair-add key1 key1.pem
                               <br>chmod 600 key1.pem
@@ -627,7 +708,7 @@
                               <input type="checkbox" value="">
                             </label>
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#compute2">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapsecompute2">
 <p>
 
                         
@@ -642,7 +723,7 @@ From admin account, create a new flavor named m1.extra_tiny with:</p>
                             </h4>
                           </div>
                         </div>
-                        <div id="compute2" class="panel-collapse collapse">
+                        <div id="collapsecompute2" class="panel-collapse collapse">
                           <div class="panel-body">
                             <p>. admin_rc.sh
                               <br>nova flavor-lis
@@ -657,7 +738,7 @@ From admin account, create a new flavor named m1.extra_tiny with:</p>
                               <input type="checkbox" value="">
                             </label>
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#compute3">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapsecompute3">
 
 
 Allow the tenant (project) "demo" to access the flavor
@@ -666,7 +747,7 @@ Allow the tenant (project) "demo" to access the flavor
                             </h4>
                           </div>
                         </div>
-                        <div id="compute3" class="panel-collapse collapse">
+                        <div id="collapsecompute3" class="panel-collapse collapse">
                           <div class="panel-body">
                             <p>openstack project list
                               <br>nova flavor-access-add m1.extra_tiny</p>
@@ -684,7 +765,7 @@ Allow the tenant (project) "demo" to access the flavor
                               <input type="checkbox" value="">
                             </label>
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#compute4">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapsecompute4">
 
 
 Add new rules to the default security group "default" to allow access instances from internet through SSH, http and ICMP.
@@ -693,7 +774,7 @@ Add new rules to the default security group "default" to allow access instances 
                             </h4>
                           </div>
                         </div>
-                        <div id="compute4" class="panel-collapse collapse">
+                        <div id="collapsecompute4" class="panel-collapse collapse">
                           <div class="panel-body">
                             <p>nova secgroup-list
                               <br>nova secgroup-list-rules default
@@ -710,7 +791,7 @@ Add new rules to the default security group "default" to allow access instances 
                               <input type="checkbox" value="">
                             </label>
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#compute5">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapsecompute5">
 
                         
 
@@ -726,7 +807,7 @@ Provision the following instance:
                             </h4>
                           </div>
                         </div>
-                        <div id="compute5" class="panel-collapse collapse">
+                        <div id="collapsecompute5" class="panel-collapse collapse">
                           <div class="panel-body">
                             <p>nova boot instance2 --image cirros-0.3.4-x86_64-uec --flavor m1.tiny --key-name
                               key1 --security-group default</p>
@@ -740,7 +821,7 @@ Provision the following instance:
                               <input type="checkbox" value="">
                             </label>
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#compute6">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapsecompute6">
 
 
 Log to the machine console using the keypair key1
@@ -749,7 +830,7 @@ Log to the machine console using the keypair key1
                             </h4>
                           </div>
                         </div>
-                        <div id="compute6" class="panel-collapse collapse">
+                        <div id="collapsecompute6" class="panel-collapse collapse">
                           <div class="panel-body">
                             <p>Get the instance IP address from nova list command:
                               <br>ssh -i key1.pem ubuntu@{ip}</p>
@@ -763,7 +844,7 @@ Log to the machine console using the keypair key1
                               <input type="checkbox" value="">
                             </label>
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#compute7">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapsecompute7">
 
 
 Create a snapshot named "instance2-snapshot" from the running image instance2
@@ -772,7 +853,7 @@ Create a snapshot named "instance2-snapshot" from the running image instance2
                             </h4>
                           </div>
                         </div>
-                        <div id="compute7" class="panel-collapse collapse">
+                        <div id="collapsecompute7" class="panel-collapse collapse">
                           <div class="panel-body">
                             <p>nova image-create {instance2} {instance2-snapshot}
                               <br>nova delete {instance2}</p>
@@ -1726,6 +1807,7 @@ Start the stack defined in the HOT template "basic.yml"
         </div>
       </div>
     </div>
+    <div id="footer"></div>
   
 
 </body></html>
